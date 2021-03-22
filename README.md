@@ -12,7 +12,7 @@ With SoMo, environments with various continuum manipulators, such as hands with 
 can be created and controlled with only a few lines of code.
 
 
-![Palm example](https://github.com/GrauleM/somo/blob/master/docs/img/importance_of_palms.png)
+![Palm example](https://github.com/GrauleM/somo/blob/main/docs/img/importance_of_palms.png)
 
 **Todos:** see [todos.md](todos.md)
 
