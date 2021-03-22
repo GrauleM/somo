@@ -1,0 +1,71 @@
+# Manipulator Definition
+
+# Author: Clark Teeple
+# Date:   09/25/2020
+# Description:
+#     This finger definition is based on the 2-DOF fingers developed in our paper
+#     "A Dexterous Soft Robotic Hand for Delicate In-Hand Manipulation", found at
+#     (https://ieeexplore.ieee.org/document/9134855). Based on the dimensions,
+#     bending stifffness, and blocked force, we can convert these measurements of
+#     the physical system into the joint stiffness and masses here. We utilize a
+#     world scale of 20 for numerical stabillity.
+
+# NOTE: Remember to scale your geometry, stiffnesses, positions, and forces
+# by the global scaling factor (usually 20x), but no need to scale masses.
+
+manipulator_name:      "abondance_finger_angled"
+urdf_filename:         "abondance_finger_angled.urdf"
+n_act:                 1
+
+# Define the actuators
+actuator_definitions:
+  - actuator_length:   2.0
+    n_segments:        10
+    planar_flag:       0
+
+    # Define the link sub-unit.
+    # The link height (z-dimension) times n_segments must equal the actuator length
+    link_definition:
+      shape_type:      "box"
+      dimensions:      [0.46,0.34,0.2]
+      mass:            0.00294
+      inertial_values: [0.0152488, 0, 0, 0.0152488, 0, 0.0152488]
+      material_color:  [0.537255, 0.407843, 0.690196, 1.0]
+      material_name:   "purple"
+
+    joint_definitions:
+      # Define joint type 1
+      - joint_type:                "revolute"
+        axis:                      [1, 0, 0]
+        limits:                    [-3.141592, 3.141592, 100, 3]
+        spring_stiffness:          87.4286 #69.9429  #151.92  #20000
+        joint_neutral_position:    0
+        neutral_axis_offset:       [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        joint_control_limit_force: 0.4
+
+      # Define joint type 2
+      - joint_type:                "revolute"
+        axis:                      [0,1,0]
+        limits:                    [-3.141592, 3.141592, 100, 3]
+        spring_stiffness:          414.857 #332  #721.24 #94000
+        joint_neutral_position:    0
+        joint_control_limit_force: 0.4
+
+# Define the base link
+base_definition:
+  shape_type:      "box"
+  dimensions:      [0.64,0.64,0.20]
+  mass:            0.6
+  inertial_values: [1, 0, 0, 1, 0, 1]
+  material_color:  [0.1, 0.8, 0.1, 1.0]
+  material_name:   "green"
+  
+# Define the tip link. For fingers, use this to define the fingertip.
+tip_definition:
+  shape_type:      "sphere"
+  dimensions:      [0.3]
+  mass:            0.015 #0.0076
+  inertial_values: [0.10944, 0, 0, 0.10944, 0, 0.10944]
+  material_color:  [0.8,0.8,0.8,1.0]
+  material_name:   "white"
+  origin_offset:   [0, 0.1, -0.2, 0, 0, 0]

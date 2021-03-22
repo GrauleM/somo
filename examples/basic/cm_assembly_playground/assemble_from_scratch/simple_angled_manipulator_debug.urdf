@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="abondance_finger">
+  <link name="base_link">
+    <visual>
+      <origin rpy="0.0 0 0" xyz="0 0 0" />
+      <geometry>
+        <box size="0.64 0.64 0.2" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="act0Seg0">
+    <visual>
+      <origin rpy="0.0 0 0" xyz="0 0 0.05" />
+      <geometry>.03
+        <box size="0.46 0.34 0.1" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="base_link_to_act0Seg0" type="fixed">
+    <parent link="base_link" />
+    <child link="act0Seg0" />
+    <origin rpy="0.785398 0 0" xyz="0 -0.141 0.141" />
+    <axis xyz="1 0 0" />
+  </joint>
+  <link name="act0Seg1">
+    <visual>
+      <origin rpy="0 0.0 0.0" xyz="0.0 0.0 0.1" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+  </link>
+  <joint name="act0Seg0_to_act0Seg1_ax0" type="revolute">
+    <parent link="act0Seg0" />
+    <child link="act0Seg1" />
+    <origin rpy="0.0  0.0 0.0" xyz="0.0 0.0 0.1" />
+    <axis xyz="1 0 0" />
+    <limit effort="100" lower="-3.141592" upper="3.141592" velocity="3" />
+  </joint>
+</robot>

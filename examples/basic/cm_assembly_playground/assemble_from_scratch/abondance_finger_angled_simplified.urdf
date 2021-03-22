@@ -1,0 +1,607 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="abondance_finger">
+  <link name="act0Seg0">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.05" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.05" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.00294" />
+      <inertia ixx="0.0152488" ixy="0" ixz="0" iyy="0.0152488" iyz="0" izz="0.0152488" />
+    </inertial>
+  </link>
+  <joint name="base_link_to_act0Seg0" type="fixed">
+    <parent link="base_link" />
+    <child link="act0Seg0" />
+    <origin rpy="0.7853 0 0" xyz="0 0 0.2" />
+    <axis xyz="1 0 0" />
+  </joint>
+  <link name="act0Seg0helper_shape">
+    <visual>
+      <origin rpy="0 -1.5707963267948966 0" xyz="0 0 0.06" />
+      <geometry>
+        <cylinder length="0.46" radius="0.17" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 -1.5707963267948966 0" xyz="0 0 0.06" />
+      <geometry>
+        <cylinder length="0.46" radius="0.17" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.94e-06" />
+      <inertia ixx="1.52488e-05" ixy="0.0" ixz="0.0" iyy="1.52488e-05" iyz="0.0" izz="1.52488e-05" />
+    </inertial>
+  </link>
+  <joint name="base_link_to_act0Seg0helper_shape" type="fixed">
+    <parent link="base_link" />
+    <child link="act0Seg0helper_shape" />
+    <origin rpy="0 0 0" xyz="0 0 0.2" />
+    <axis xyz="1 0 0" />
+  </joint>
+  <link name="act0Seg1">
+    <visual>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.12 0.1" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.12 0.1" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.00294" />
+      <inertia ixx="0.0152488" ixy="0" ixz="0" iyy="0.0152488" iyz="0" izz="0.0152488" />
+    </inertial>
+  </link>
+  <joint name="act0Seg0_to_act0Seg1_ax0" type="revolute">
+    <parent link="act0Seg0" />
+    <child link="act0Seg1" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.12 0.1" />
+    <axis xyz="1 0 0" />
+    <limit effort="100" lower="-3.141592" upper="3.141592" velocity="3" />
+  </joint>
+  <link name="act0Seg1helper_shape">
+    <visual>
+      <origin rpy="0 -1.5707963267948966 0" xyz="0 0 0.06" />
+      <geometry>
+        <cylinder length="0.46" radius="0.17" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 -1.5707963267948966 0" xyz="0 0 0.06" />
+      <geometry>
+        <cylinder length="0.46" radius="0.17" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.94e-06" />
+      <inertia ixx="1.52488e-05" ixy="0.0" ixz="0.0" iyy="1.52488e-05" iyz="0.0" izz="1.52488e-05" />
+    </inertial>
+  </link>
+  <joint name="act0Seg0_to_act0Seg1_ax0helper_shape" type="fixed">
+    <parent link="act0Seg0" />
+    <child link="act0Seg1helper_shape" />
+    <origin rpy="0 0 0" xyz="0 0 0.1" />
+    <axis xyz="1 0 0" />
+  </joint>
+  <link name="act0Seg2">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.1" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.1" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.00294" />
+      <inertia ixx="0.0152488" ixy="0" ixz="0" iyy="0.0152488" iyz="0" izz="0.0152488" />
+    </inertial>
+  </link>
+  <joint name="act0Seg1_to_act0Seg2_ax1" type="revolute">
+    <parent link="act0Seg1" />
+    <child link="act0Seg2" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.12 0.2" />
+    <axis xyz="0 1 0" />
+    <limit effort="100" lower="-3.141592" upper="3.141592" velocity="3" />
+  </joint>
+  <link name="act0Seg2helper_shape">
+    <visual>
+      <origin rpy="-1.5707963267948966 0 0" xyz="0 0 -0.06" />
+      <geometry>
+        <cylinder length="0.34" radius="0.23" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="-1.5707963267948966 0 0" xyz="0 0 -0.06" />
+      <geometry>
+        <cylinder length="0.34" radius="0.23" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.94e-06" />
+      <inertia ixx="1.52488e-05" ixy="0.0" ixz="0.0" iyy="1.52488e-05" iyz="0.0" izz="1.52488e-05" />
+    </inertial>
+  </link>
+  <joint name="act0Seg1_to_act0Seg2_ax1helper_shape" type="fixed">
+    <parent link="act0Seg1" />
+    <child link="act0Seg2helper_shape" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.12 0.2" />
+    <axis xyz="1 0 0" />
+  </joint>
+  <link name="act0Seg3">
+    <visual>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.12 0.1" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.12 0.1" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.00294" />
+      <inertia ixx="0.0152488" ixy="0" ixz="0" iyy="0.0152488" iyz="0" izz="0.0152488" />
+    </inertial>
+  </link>
+  <joint name="act0Seg2_to_act0Seg3_ax0" type="revolute">
+    <parent link="act0Seg2" />
+    <child link="act0Seg3" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.12 0.2" />
+    <axis xyz="1 0 0" />
+    <limit effort="100" lower="-3.141592" upper="3.141592" velocity="3" />
+  </joint>
+  <link name="act0Seg3helper_shape">
+    <visual>
+      <origin rpy="0 -1.5707963267948966 0" xyz="0 0 0.06" />
+      <geometry>
+        <cylinder length="0.46" radius="0.17" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 -1.5707963267948966 0" xyz="0 0 0.06" />
+      <geometry>
+        <cylinder length="0.46" radius="0.17" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.94e-06" />
+      <inertia ixx="1.52488e-05" ixy="0.0" ixz="0.0" iyy="1.52488e-05" iyz="0.0" izz="1.52488e-05" />
+    </inertial>
+  </link>
+  <joint name="act0Seg2_to_act0Seg3_ax0helper_shape" type="fixed">
+    <parent link="act0Seg2" />
+    <child link="act0Seg3helper_shape" />
+    <origin rpy="0 0 0" xyz="0 0 0.2" />
+    <axis xyz="1 0 0" />
+  </joint>
+  <link name="act0Seg4">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.1" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.1" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.00294" />
+      <inertia ixx="0.0152488" ixy="0" ixz="0" iyy="0.0152488" iyz="0" izz="0.0152488" />
+    </inertial>
+  </link>
+  <joint name="act0Seg3_to_act0Seg4_ax1" type="revolute">
+    <parent link="act0Seg3" />
+    <child link="act0Seg4" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.12 0.2" />
+    <axis xyz="0 1 0" />
+    <limit effort="100" lower="-3.141592" upper="3.141592" velocity="3" />
+  </joint>
+  <link name="act0Seg4helper_shape">
+    <visual>
+      <origin rpy="-1.5707963267948966 0 0" xyz="0 0 -0.06" />
+      <geometry>
+        <cylinder length="0.34" radius="0.23" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="-1.5707963267948966 0 0" xyz="0 0 -0.06" />
+      <geometry>
+        <cylinder length="0.34" radius="0.23" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.94e-06" />
+      <inertia ixx="1.52488e-05" ixy="0.0" ixz="0.0" iyy="1.52488e-05" iyz="0.0" izz="1.52488e-05" />
+    </inertial>
+  </link>
+  <joint name="act0Seg3_to_act0Seg4_ax1helper_shape" type="fixed">
+    <parent link="act0Seg3" />
+    <child link="act0Seg4helper_shape" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.12 0.2" />
+    <axis xyz="1 0 0" />
+  </joint>
+  <link name="act0Seg5">
+    <visual>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.12 0.1" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.12 0.1" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.00294" />
+      <inertia ixx="0.0152488" ixy="0" ixz="0" iyy="0.0152488" iyz="0" izz="0.0152488" />
+    </inertial>
+  </link>
+  <joint name="act0Seg4_to_act0Seg5_ax0" type="revolute">
+    <parent link="act0Seg4" />
+    <child link="act0Seg5" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.12 0.2" />
+    <axis xyz="1 0 0" />
+    <limit effort="100" lower="-3.141592" upper="3.141592" velocity="3" />
+  </joint>
+  <link name="act0Seg5helper_shape">
+    <visual>
+      <origin rpy="0 -1.5707963267948966 0" xyz="0 0 0.06" />
+      <geometry>
+        <cylinder length="0.46" radius="0.17" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 -1.5707963267948966 0" xyz="0 0 0.06" />
+      <geometry>
+        <cylinder length="0.46" radius="0.17" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.94e-06" />
+      <inertia ixx="1.52488e-05" ixy="0.0" ixz="0.0" iyy="1.52488e-05" iyz="0.0" izz="1.52488e-05" />
+    </inertial>
+  </link>
+  <joint name="act0Seg4_to_act0Seg5_ax0helper_shape" type="fixed">
+    <parent link="act0Seg4" />
+    <child link="act0Seg5helper_shape" />
+    <origin rpy="0 0 0" xyz="0 0 0.2" />
+    <axis xyz="1 0 0" />
+  </joint>
+  <link name="act0Seg6">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.1" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.1" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.00294" />
+      <inertia ixx="0.0152488" ixy="0" ixz="0" iyy="0.0152488" iyz="0" izz="0.0152488" />
+    </inertial>
+  </link>
+  <joint name="act0Seg5_to_act0Seg6_ax1" type="revolute">
+    <parent link="act0Seg5" />
+    <child link="act0Seg6" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.12 0.2" />
+    <axis xyz="0 1 0" />
+    <limit effort="100" lower="-3.141592" upper="3.141592" velocity="3" />
+  </joint>
+  <link name="act0Seg6helper_shape">
+    <visual>
+      <origin rpy="-1.5707963267948966 0 0" xyz="0 0 -0.06" />
+      <geometry>
+        <cylinder length="0.34" radius="0.23" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="-1.5707963267948966 0 0" xyz="0 0 -0.06" />
+      <geometry>
+        <cylinder length="0.34" radius="0.23" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.94e-06" />
+      <inertia ixx="1.52488e-05" ixy="0.0" ixz="0.0" iyy="1.52488e-05" iyz="0.0" izz="1.52488e-05" />
+    </inertial>
+  </link>
+  <joint name="act0Seg5_to_act0Seg6_ax1helper_shape" type="fixed">
+    <parent link="act0Seg5" />
+    <child link="act0Seg6helper_shape" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.12 0.2" />
+    <axis xyz="1 0 0" />
+  </joint>
+  <link name="act0Seg7">
+    <visual>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.12 0.1" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.12 0.1" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.00294" />
+      <inertia ixx="0.0152488" ixy="0" ixz="0" iyy="0.0152488" iyz="0" izz="0.0152488" />
+    </inertial>
+  </link>
+  <joint name="act0Seg6_to_act0Seg7_ax0" type="revolute">
+    <parent link="act0Seg6" />
+    <child link="act0Seg7" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.12 0.2" />
+    <axis xyz="1 0 0" />
+    <limit effort="100" lower="-3.141592" upper="3.141592" velocity="3" />
+  </joint>
+  <link name="act0Seg7helper_shape">
+    <visual>
+      <origin rpy="0 -1.5707963267948966 0" xyz="0 0 0.06" />
+      <geometry>
+        <cylinder length="0.46" radius="0.17" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 -1.5707963267948966 0" xyz="0 0 0.06" />
+      <geometry>
+        <cylinder length="0.46" radius="0.17" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.94e-06" />
+      <inertia ixx="1.52488e-05" ixy="0.0" ixz="0.0" iyy="1.52488e-05" iyz="0.0" izz="1.52488e-05" />
+    </inertial>
+  </link>
+  <joint name="act0Seg6_to_act0Seg7_ax0helper_shape" type="fixed">
+    <parent link="act0Seg6" />
+    <child link="act0Seg7helper_shape" />
+    <origin rpy="0 0 0" xyz="0 0 0.2" />
+    <axis xyz="1 0 0" />
+  </joint>
+  <link name="act0Seg8">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.1" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.1" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.00294" />
+      <inertia ixx="0.0152488" ixy="0" ixz="0" iyy="0.0152488" iyz="0" izz="0.0152488" />
+    </inertial>
+  </link>
+  <joint name="act0Seg7_to_act0Seg8_ax1" type="revolute">
+    <parent link="act0Seg7" />
+    <child link="act0Seg8" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.12 0.2" />
+    <axis xyz="0 1 0" />
+    <limit effort="100" lower="-3.141592" upper="3.141592" velocity="3" />
+  </joint>
+  <link name="act0Seg8helper_shape">
+    <visual>
+      <origin rpy="-1.5707963267948966 0 0" xyz="0 0 -0.06" />
+      <geometry>
+        <cylinder length="0.34" radius="0.23" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="-1.5707963267948966 0 0" xyz="0 0 -0.06" />
+      <geometry>
+        <cylinder length="0.34" radius="0.23" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.94e-06" />
+      <inertia ixx="1.52488e-05" ixy="0.0" ixz="0.0" iyy="1.52488e-05" iyz="0.0" izz="1.52488e-05" />
+    </inertial>
+  </link>
+  <joint name="act0Seg7_to_act0Seg8_ax1helper_shape" type="fixed">
+    <parent link="act0Seg7" />
+    <child link="act0Seg8helper_shape" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.12 0.2" />
+    <axis xyz="1 0 0" />
+  </joint>
+  <link name="act0Seg9">
+    <visual>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.12 0.1" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.12 0.1" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.00294" />
+      <inertia ixx="0.0152488" ixy="0" ixz="0" iyy="0.0152488" iyz="0" izz="0.0152488" />
+    </inertial>
+  </link>
+  <joint name="act0Seg8_to_act0Seg9_ax0" type="revolute">
+    <parent link="act0Seg8" />
+    <child link="act0Seg9" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.12 0.2" />
+    <axis xyz="1 0 0" />
+    <limit effort="100" lower="-3.141592" upper="3.141592" velocity="3" />
+  </joint>
+  <link name="act0Seg9helper_shape">
+    <visual>
+      <origin rpy="0 -1.5707963267948966 0" xyz="0 0 0.06" />
+      <geometry>
+        <cylinder length="0.46" radius="0.17" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 -1.5707963267948966 0" xyz="0 0 0.06" />
+      <geometry>
+        <cylinder length="0.46" radius="0.17" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.94e-06" />
+      <inertia ixx="1.52488e-05" ixy="0.0" ixz="0.0" iyy="1.52488e-05" iyz="0.0" izz="1.52488e-05" />
+    </inertial>
+  </link>
+  <joint name="act0Seg8_to_act0Seg9_ax0helper_shape" type="fixed">
+    <parent link="act0Seg8" />
+    <child link="act0Seg9helper_shape" />
+    <origin rpy="0 0 0" xyz="0 0 0.2" />
+    <axis xyz="1 0 0" />
+  </joint>
+  <link name="act0Seg10">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.05" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.05" />
+      <geometry>
+        <box size="0.46 0.34 0.2" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.00294" />
+      <inertia ixx="0.0152488" ixy="0" ixz="0" iyy="0.0152488" iyz="0" izz="0.0152488" />
+    </inertial>
+  </link>
+  <joint name="act0Seg9_to_act0Seg10_ax1" type="revolute">
+    <parent link="act0Seg9" />
+    <child link="act0Seg10" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.12 0.2" />
+    <axis xyz="0 1 0" />
+    <limit effort="100" lower="-3.141592" upper="3.141592" velocity="3" />
+  </joint>
+  <link name="act0Seg10helper_shape">
+    <visual>
+      <origin rpy="-1.5707963267948966 0 0" xyz="0 0 -0.06" />
+      <geometry>
+        <cylinder length="0.34" radius="0.23" />
+      </geometry>
+      <material name="purple">
+        <color rgba="0.537255 0.407843 0.690196 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="-1.5707963267948966 0 0" xyz="0 0 -0.06" />
+      <geometry>
+        <cylinder length="0.34" radius="0.23" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.94e-06" />
+      <inertia ixx="1.52488e-05" ixy="0.0" ixz="0.0" iyy="1.52488e-05" iyz="0.0" izz="1.52488e-05" />
+    </inertial>
+  </link>
+  <joint name="act0Seg9_to_act0Seg10_ax1helper_shape" type="fixed">
+    <parent link="act0Seg9" />
+    <child link="act0Seg10helper_shape" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.12 0.2" />
+    <axis xyz="1 0 0" />
+  </joint>
+</robot>

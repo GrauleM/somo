@@ -1,0 +1,1330 @@
+<?xml version="0.0" ?>
+<robot name="">
+	<link name="base_link">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.60000"/>
+			<inertia ixx="0.02265" ixy="0" ixz="0" iyy="0.02265" iyz="0" izz="0.04122"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+			<geometry>
+				<box size="0.64000 0.64000 0.20000"/>
+			</geometry>
+			<material name="mat_-1_0">
+				<color rgba="0.10000 0.80000 0.10000 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+			<geometry>
+				<box size="0.64000 0.64000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg0">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.05000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_0_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.05000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg1">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_1_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg2">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_2_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg3">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_3_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg4">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_4_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg5">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_5_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg6">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_6_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg7">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_7_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg8">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_8_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg9">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_9_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg10">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.05000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_10_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.05000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg10helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="-1.57080 0.00000 0.00000" xyz="0.00000 0.00000 -0.06000"/>
+			<geometry>
+				<cylinder length="0.34000" radius="0.23000"/>
+			</geometry>
+			<material name="mat_11_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="-1.57080 0.00000 0.00000" xyz="0.00000 0.00000 -0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg9helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<cylinder length="0.46000" radius="0.17000"/>
+			</geometry>
+			<material name="mat_12_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg8helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="-1.57080 0.00000 0.00000" xyz="0.00000 0.00000 -0.06000"/>
+			<geometry>
+				<cylinder length="0.34000" radius="0.23000"/>
+			</geometry>
+			<material name="mat_13_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="-1.57080 0.00000 0.00000" xyz="0.00000 0.00000 -0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg7helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<cylinder length="0.46000" radius="0.17000"/>
+			</geometry>
+			<material name="mat_14_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg6helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="-1.57080 0.00000 0.00000" xyz="0.00000 0.00000 -0.06000"/>
+			<geometry>
+				<cylinder length="0.34000" radius="0.23000"/>
+			</geometry>
+			<material name="mat_15_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="-1.57080 0.00000 0.00000" xyz="0.00000 0.00000 -0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg5helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<cylinder length="0.46000" radius="0.17000"/>
+			</geometry>
+			<material name="mat_16_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg4helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="-1.57080 0.00000 0.00000" xyz="0.00000 0.00000 -0.06000"/>
+			<geometry>
+				<cylinder length="0.34000" radius="0.23000"/>
+			</geometry>
+			<material name="mat_17_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="-1.57080 0.00000 0.00000" xyz="0.00000 0.00000 -0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg3helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<cylinder length="0.46000" radius="0.17000"/>
+			</geometry>
+			<material name="mat_18_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg2helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="-1.57080 0.00000 0.00000" xyz="0.00000 0.00000 -0.06000"/>
+			<geometry>
+				<cylinder length="0.34000" radius="0.23000"/>
+			</geometry>
+			<material name="mat_19_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="-1.57080 0.00000 0.00000" xyz="0.00000 0.00000 -0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg1helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<cylinder length="0.46000" radius="0.17000"/>
+			</geometry>
+			<material name="mat_20_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg0helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<cylinder length="0.46000" radius="0.17000"/>
+			</geometry>
+			<material name="mat_21_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="base_link">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.60000"/>
+			<inertia ixx="0.02265" ixy="0" ixz="0" iyy="0.02265" iyz="0" izz="0.04122"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+			<geometry>
+				<box size="0.64000 0.64000 0.20000"/>
+			</geometry>
+			<material name="mat_-1_0">
+				<color rgba="0.10000 0.80000 0.10000 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+			<geometry>
+				<box size="0.64000 0.64000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg0">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.05000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_0_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.05000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg1">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_1_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg2">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_2_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg3">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_3_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg4">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_4_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg5">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_5_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg6">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_6_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg7">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_7_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg8">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_8_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg9">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_9_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.10000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg10">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00294"/>
+			<inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00006" iyz="0" izz="0.00008"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.05000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+			<material name="mat_10_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.05000"/>
+			<geometry>
+				<box size="0.46000 0.34000 0.20000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg10helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="-1.57080 0.00000 0.00000" xyz="0.00000 0.00000 -0.06000"/>
+			<geometry>
+				<cylinder length="0.34000" radius="0.23000"/>
+			</geometry>
+			<material name="mat_11_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="-1.57080 0.00000 0.00000" xyz="0.00000 0.00000 -0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg9helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<cylinder length="0.46000" radius="0.17000"/>
+			</geometry>
+			<material name="mat_12_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg8helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="-1.57080 0.00000 0.00000" xyz="0.00000 0.00000 -0.06000"/>
+			<geometry>
+				<cylinder length="0.34000" radius="0.23000"/>
+			</geometry>
+			<material name="mat_13_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="-1.57080 0.00000 0.00000" xyz="0.00000 0.00000 -0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg7helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<cylinder length="0.46000" radius="0.17000"/>
+			</geometry>
+			<material name="mat_14_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg6helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="-1.57080 0.00000 0.00000" xyz="0.00000 0.00000 -0.06000"/>
+			<geometry>
+				<cylinder length="0.34000" radius="0.23000"/>
+			</geometry>
+			<material name="mat_15_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="-1.57080 0.00000 0.00000" xyz="0.00000 0.00000 -0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg5helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<cylinder length="0.46000" radius="0.17000"/>
+			</geometry>
+			<material name="mat_16_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg4helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="-1.57080 0.00000 0.00000" xyz="0.00000 0.00000 -0.06000"/>
+			<geometry>
+				<cylinder length="0.34000" radius="0.23000"/>
+			</geometry>
+			<material name="mat_17_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="-1.57080 0.00000 0.00000" xyz="0.00000 0.00000 -0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg3helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<cylinder length="0.46000" radius="0.17000"/>
+			</geometry>
+			<material name="mat_18_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg2helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="-1.57080 0.00000 0.00000" xyz="0.00000 0.00000 -0.06000"/>
+			<geometry>
+				<cylinder length="0.34000" radius="0.23000"/>
+			</geometry>
+			<material name="mat_19_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="-1.57080 0.00000 0.00000" xyz="0.00000 0.00000 -0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg1helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<cylinder length="0.46000" radius="0.17000"/>
+			</geometry>
+			<material name="mat_20_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="act0Seg0helper_shape">
+		<inertial>
+			<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+			<mass value="0.00000"/>
+			<inertia ixx="0.00000" ixy="0" ixz="0" iyy="0.00000" iyz="0" izz="0.00000"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<cylinder length="0.46000" radius="0.17000"/>
+			</geometry>
+			<material name="mat_21_0">
+				<color rgba="0.53725 0.40784 0.69020 1.00000" />
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.06000"/>
+			<geometry>
+				<mesh filename="unknown_file" scale="1.00000 1.00000 1.00000"/>
+			</geometry>
+		</collision>
+	</link>
+	<joint name="base_link_to_act0Seg0" type="fixed">
+		<parent link="base_link"/>
+		<child link="act0Seg0"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg0_to_act0Seg1_ax0" type="revolute">
+		<parent link="act0Seg0"/>
+		<child link="act0Seg1"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.12000 0.10000"/>
+		<axis xyz="1.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg1_to_act0Seg2_ax1" type="revolute">
+		<parent link="act0Seg1"/>
+		<child link="act0Seg2"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.20000"/>
+		<axis xyz="0.00000 1.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg2_to_act0Seg3_ax0" type="revolute">
+		<parent link="act0Seg2"/>
+		<child link="act0Seg3"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.12000 0.20000"/>
+		<axis xyz="1.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg3_to_act0Seg4_ax1" type="revolute">
+		<parent link="act0Seg3"/>
+		<child link="act0Seg4"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.20000"/>
+		<axis xyz="0.00000 1.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg4_to_act0Seg5_ax0" type="revolute">
+		<parent link="act0Seg4"/>
+		<child link="act0Seg5"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.12000 0.20000"/>
+		<axis xyz="1.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg5_to_act0Seg6_ax1" type="revolute">
+		<parent link="act0Seg5"/>
+		<child link="act0Seg6"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.20000"/>
+		<axis xyz="0.00000 1.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg6_to_act0Seg7_ax0" type="revolute">
+		<parent link="act0Seg6"/>
+		<child link="act0Seg7"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.12000 0.20000"/>
+		<axis xyz="1.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg7_to_act0Seg8_ax1" type="revolute">
+		<parent link="act0Seg7"/>
+		<child link="act0Seg8"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.20000"/>
+		<axis xyz="0.00000 1.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg8_to_act0Seg9_ax0" type="revolute">
+		<parent link="act0Seg8"/>
+		<child link="act0Seg9"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.12000 0.20000"/>
+		<axis xyz="1.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg9_to_act0Seg10_ax1" type="revolute">
+		<parent link="act0Seg9"/>
+		<child link="act0Seg10"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.20000"/>
+		<axis xyz="0.00000 1.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg9_to_act0Seg10_ax1helper_shape" type="fixed">
+		<parent link="act0Seg9"/>
+		<child link="act0Seg10helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg8_to_act0Seg9_ax0helper_shape" type="fixed">
+		<parent link="act0Seg8"/>
+		<child link="act0Seg9helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg7_to_act0Seg8_ax1helper_shape" type="fixed">
+		<parent link="act0Seg7"/>
+		<child link="act0Seg8helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg6_to_act0Seg7_ax0helper_shape" type="fixed">
+		<parent link="act0Seg6"/>
+		<child link="act0Seg7helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg5_to_act0Seg6_ax1helper_shape" type="fixed">
+		<parent link="act0Seg5"/>
+		<child link="act0Seg6helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg4_to_act0Seg5_ax0helper_shape" type="fixed">
+		<parent link="act0Seg4"/>
+		<child link="act0Seg5helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg3_to_act0Seg4_ax1helper_shape" type="fixed">
+		<parent link="act0Seg3"/>
+		<child link="act0Seg4helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg2_to_act0Seg3_ax0helper_shape" type="fixed">
+		<parent link="act0Seg2"/>
+		<child link="act0Seg3helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg1_to_act0Seg2_ax1helper_shape" type="fixed">
+		<parent link="act0Seg1"/>
+		<child link="act0Seg2helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg0_to_act0Seg1_ax0helper_shape" type="fixed">
+		<parent link="act0Seg0"/>
+		<child link="act0Seg1helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="base_link_to_act0Seg0helper_shape" type="fixed">
+		<parent link="base_link"/>
+		<child link="act0Seg0helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="joint_dummy1" type="fixed">
+		<parent link="base_link"/>
+		<child link="base_link"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+		<axis xyz="0.00000 0.00000 1.00000"/>
+	</joint>
+	<joint name="base_link_to_act0Seg0" type="fixed">
+		<parent link="base_link"/>
+		<child link="act0Seg0"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg0_to_act0Seg1_ax0" type="revolute">
+		<parent link="act0Seg0"/>
+		<child link="act0Seg1"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.12000 0.10000"/>
+		<axis xyz="1.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg1_to_act0Seg2_ax1" type="revolute">
+		<parent link="act0Seg1"/>
+		<child link="act0Seg2"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.20000"/>
+		<axis xyz="0.00000 1.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg2_to_act0Seg3_ax0" type="revolute">
+		<parent link="act0Seg2"/>
+		<child link="act0Seg3"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.12000 0.20000"/>
+		<axis xyz="1.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg3_to_act0Seg4_ax1" type="revolute">
+		<parent link="act0Seg3"/>
+		<child link="act0Seg4"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.20000"/>
+		<axis xyz="0.00000 1.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg4_to_act0Seg5_ax0" type="revolute">
+		<parent link="act0Seg4"/>
+		<child link="act0Seg5"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.12000 0.20000"/>
+		<axis xyz="1.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg5_to_act0Seg6_ax1" type="revolute">
+		<parent link="act0Seg5"/>
+		<child link="act0Seg6"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.20000"/>
+		<axis xyz="0.00000 1.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg6_to_act0Seg7_ax0" type="revolute">
+		<parent link="act0Seg6"/>
+		<child link="act0Seg7"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.12000 0.20000"/>
+		<axis xyz="1.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg7_to_act0Seg8_ax1" type="revolute">
+		<parent link="act0Seg7"/>
+		<child link="act0Seg8"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.20000"/>
+		<axis xyz="0.00000 1.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg8_to_act0Seg9_ax0" type="revolute">
+		<parent link="act0Seg8"/>
+		<child link="act0Seg9"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.12000 0.20000"/>
+		<axis xyz="1.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg9_to_act0Seg10_ax1" type="revolute">
+		<parent link="act0Seg9"/>
+		<child link="act0Seg10"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.20000"/>
+		<axis xyz="0.00000 1.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg9_to_act0Seg10_ax1helper_shape" type="fixed">
+		<parent link="act0Seg9"/>
+		<child link="act0Seg10helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg8_to_act0Seg9_ax0helper_shape" type="fixed">
+		<parent link="act0Seg8"/>
+		<child link="act0Seg9helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg7_to_act0Seg8_ax1helper_shape" type="fixed">
+		<parent link="act0Seg7"/>
+		<child link="act0Seg8helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg6_to_act0Seg7_ax0helper_shape" type="fixed">
+		<parent link="act0Seg6"/>
+		<child link="act0Seg7helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg5_to_act0Seg6_ax1helper_shape" type="fixed">
+		<parent link="act0Seg5"/>
+		<child link="act0Seg6helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg4_to_act0Seg5_ax0helper_shape" type="fixed">
+		<parent link="act0Seg4"/>
+		<child link="act0Seg5helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg3_to_act0Seg4_ax1helper_shape" type="fixed">
+		<parent link="act0Seg3"/>
+		<child link="act0Seg4helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg2_to_act0Seg3_ax0helper_shape" type="fixed">
+		<parent link="act0Seg2"/>
+		<child link="act0Seg3helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg1_to_act0Seg2_ax1helper_shape" type="fixed">
+		<parent link="act0Seg1"/>
+		<child link="act0Seg2helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.12000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="act0Seg0_to_act0Seg1_ax0helper_shape" type="fixed">
+		<parent link="act0Seg0"/>
+		<child link="act0Seg1helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+	<joint name="base_link_to_act0Seg0helper_shape" type="fixed">
+		<parent link="base_link"/>
+		<child link="act0Seg0helper_shape"/>
+		<dynamics damping="1.0" friction="0.0001"/>
+		<origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 0.20000"/>
+		<axis xyz="0.00000 0.00000 0.00000"/>
+	</joint>
+</robot>
