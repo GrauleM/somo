@@ -1,4 +1,6 @@
 # SoMo
+**Fast  and  Accurate  Simulations  of  Continuum  Robots in  Complex  Environments**
+
 > This module contains a light wrapper around pybullet that facilitates the simulation of continuum manipulators.
 
 > The following is a pre-release. We are actively working on cleaning up this code and providing a thorough documentation. 
