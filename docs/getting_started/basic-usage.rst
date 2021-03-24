@@ -15,6 +15,8 @@ Set up a definition file
 
 SoMo manipulators are defined as dictionaries describing one or more actuators, each of which is made up of several links and joints.
 
+.. image:: img/model_schematic.png
+
 .. note::
 	TODO - will add example yaml file.
 
