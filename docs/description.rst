@@ -10,12 +10,7 @@ simulator. With SoMo, environments with various continuum manipulators,
 such as hands with soft fingers (xxx links), or snakes, can be created
 and controlled with only a few lines of code.
 
-.. figure:: https://github.com/GrauleM/somo/blob/master/docs/img/importance_of_palms.png
-   :alt: Palm example
 
-   Palm example
-
-**Todos:** see `todos.md`_
 
 Installation
 ------------
