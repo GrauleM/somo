@@ -30,6 +30,7 @@ author = 'Moritz A. Graule, Harvard Microrobotics Lab'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['recommonmark',
+              'sphinx_markdown_tables',
               'sphinx.ext.autodoc',
               'sphinx.ext.coverage',
               'sphinx.ext.napoleon',
