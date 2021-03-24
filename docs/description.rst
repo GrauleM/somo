@@ -15,72 +15,53 @@ and controlled with only a few lines of code.
 .. image:: img/importance_of_palms.png
 
 
-Installation
-------------
 
-Requirements
-~~~~~~~~~~~~
+Quick Install
+=============
 
--  `Python 3.6`_\ +
--  Tested on:
+..note::
+   Coming soon: pip install!
 
-   -  Ubuntu 16.04 and Ubuntu 18.04 with Python 3.6.9
-   -  Ubuntu 20.04 with Python 3.6.9, 3.7.9 and 3.8.2
-   -  Windows 10 with Python 3.7 through `Anaconda`_
 
--  Recommended: pip (``sudo apt-get install python3-pip``)
--  Recommended (for Ubuntu): `venv`_
-   (``sudo apt-get install python3-venv``)
 
-Setup
-~~~~~
-
-0. Make sure your system meets the requirements
-1. Clone this repository
-2. Set up a dedicated virtual environment using ``venv``
-3. Activate virtual environment
-4. Install requirements from this repo:
-   ``$ pip install -r requirements.txt``
-5. Install this module:
-
-   -  either by cloning this repo to your machine and using
-      ``$  pip install -e .`` from the repo root, or with
-   -  ``$ pip install git+https://github.com/graulem/somo``
-
-6. To upgrade to the newest version:
-   ``$ pip install git+https://github.com/graulem/somo --upgrade``
 
 Explore the examples
 ~~~~~~~~~~~~~~~~~~~~
 
--  run any of the files in the examples folder. xx is a great place to
-   start xx should not be part of the installation
+Run any of the files in the examples folder. "examples/basic" is a great place to start!
 
-Contributing
-~~~~~~~~~~~~
 
--  only through a new branch and reviewed PR (no pushes to master!)
--  always use `Black`_ for code formatting
--  always bump the version of your branch by increasing the version
-   number listed in somo/_version.py
 
-Using this framework
---------------------
 
-This framework relies on two key components: a collection of methods
-that facilitates the automated generation of urdf files (xx); and a
-class that relies heavily on pybullet to define a CMClass object (xx
-rephrase). A CMClass object can be instantiated from a json file (xx not
-implemented yet) that specifies the properties of the continuum
-manipulator in human-readable form, enabling the user to easily keep
-track of and vary the properties of different CMs through a series of
-experiments.
+Links
+=====
 
-.. raw:: html
+**Documentation:** `Read the Docs <https://somo.readthedocs.io/en/latest/>`_
 
-   <!--
-   the continuum manipulator class, which relies heavily on pybullet, defines a CM object and provides an intuitive interface to 
-   -->
+**PyPi (Not Launched Yet):** `gridsim <https://pypi.org/project/somo/>`_
+
+**Source code:** `Github <https://github.com/graulem/somo>`_
+
+
+Contact
+=======
+
+If you have questions, or if you've done something interesting with this package, get in touch! `graulem@g.harvard.edu <mailto:graulem@g.harvard.edu>`_.
+
+If you find a problem or want something added to the library, `open an issue on Github <https://github.com/graulem/somo/issues>`_.
+
+
 
 Citation
---------
+=========
+
+.. code-block:: console
+  
+   @inproceedings{graule2020somo,
+      title={SoMo: Fast and Accurate Simulations of Continuum Robots in Complex Environments},
+      author={Graule, Moritz A. and Teeple, Clark B and McCarthy, Thomas P and St. Louis, Randall C and Kim, Grace R and Wood, Robert J},
+      booktitle={2021 IEEE International Conference on Intelligent Robots and Systems (IROS)},
+      pages={In Review},
+      year={2021},
+      organization={IEEE}
+   }

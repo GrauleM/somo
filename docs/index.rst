@@ -13,6 +13,7 @@ SoMo: Fast, Accurate Simulations of Continuum Robots in Complex Environments
 
    getting_started/index
    reference/index
+   contributing
 
 
 
