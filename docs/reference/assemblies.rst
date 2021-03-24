@@ -6,4 +6,4 @@ You can connect several **manipulators** object into **assemblies** such as a ha
 
 
 .. note::
-	This is coming soon!
+	Documentation for this is coming soon!

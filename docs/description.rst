@@ -12,6 +12,9 @@ and controlled with only a few lines of code.
 
 
 
+.. image:: img/importance_of_palms.png
+
+
 Installation
 ------------
 
