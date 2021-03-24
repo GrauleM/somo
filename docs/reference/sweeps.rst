@@ -10,3 +10,4 @@ Once you have your environment set up, you can easily run parameter sweeps using
 
 .. automodule:: somo.sweep
    :members:
+   :imported-members:
