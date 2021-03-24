@@ -38,7 +38,7 @@ Links
 
 **Documentation:** `Read the Docs <https://somo.readthedocs.io/en/latest/>`_
 
-**PyPi (Not Launched Yet):** `gridsim <https://pypi.org/project/somo/>`_
+**PyPi (Not Launched Yet):** `somo <https://pypi.org/project/somo/>`_
 
 **Source code:** `Github <https://github.com/graulem/somo>`_
 
