@@ -26,7 +26,7 @@ Quick Install
 
 
 Explore the examples
-~~~~~~~~~~~~~~~~~~~~
+====================
 
 Run any of the files in the examples folder. "examples/basic" is a great place to start!
 
