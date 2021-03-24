@@ -86,15 +86,3 @@ experiments.
 
 Citation
 --------
-
-xx
-
-Licens
-------
-
-.. _pybullet: https://github.com/bulletphysics/bullet3/tree/master/examples/pybullet
-.. _todos.md: todos.md
-.. _Python 3.6: https://www.python.org/downloads/release/python-360/
-.. _Anaconda: https://www.anaconda.com/products/individual#Downloads
-.. _venv: https://docs.python.org/3/library/venv.html
-.. _Black: https://pypi.org/project/black/
