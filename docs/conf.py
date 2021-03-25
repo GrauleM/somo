@@ -41,7 +41,7 @@ extensions = ['recommonmark',
               'sphinx.ext.graphviz']
 
 
-autodoc_mock_imports = ['pandas','seaborn','pathos']
+autodoc_mock_imports = ['pandas','seaborn','pathos', 'yaml']
 
 # Read in all required packages and add them to a list
 import requirements
