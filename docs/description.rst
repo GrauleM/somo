@@ -2,12 +2,12 @@ SoMo is a light wrapper around pybullet that facilitates
 the simulation of continuum manipulators.
 
 SoMo (**So**\ ft\ **Mo**\ tion) is a framework to facilitate the
-simulation of continuum manipulator (CM) motion in `pybullet`. In SoMo,
+simulation of continuum manipulator motion in `PyBullet physics engine <https://github.com/bulletphysics/bullet3/tree/master/examples/pybullet>`_. In SoMo,
 continuum manipulators are approximated as a series of rigid links
 connected by spring-loaded joints. SoMo makes it easy to create URDFs of
 such approximated manipulators and load them into pybullet’s rigid body
-simulator. With SoMo, environments with various continuum manipulators,
-such as hands with soft fingers (xxx links), or snakes, can be created
+simulator. With SoMo, environments with various continuum manipulators
+(such as hands with soft fingers or snakes) can be created
 and controlled with only a few lines of code.
 
 
