@@ -26,15 +26,31 @@ author = 'Moritz A. Graule, Harvard Microrobotics Lab'
 
 # -- General configuration ---------------------------------------------------
 
+# Set name of Master Doc
+master_doc = 'index'
+
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['recommonmark',
               'sphinx_markdown_tables',
+              'sphinx_copybutton',
               'sphinx.ext.autodoc',
               'sphinx.ext.coverage',
               'sphinx.ext.napoleon',
               'sphinx.ext.graphviz']
+
+
+autodoc_mock_imports = ['pandas','seaborn','pathos']
+
+# Read in all required packages and add them to a list
+import requirements
+with open('../requirements.txt', 'r') as fd:
+	for req in requirements.parse(fd):
+		autodoc_mock_imports.append(req.name)
+
+autodoc_mock_imports = autodoc_mock_imports
+
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

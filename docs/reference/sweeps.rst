@@ -1,6 +1,6 @@
-======
+
 Generating Parameter Sweeps
-======
+===========================
 
 Once you have your environment set up, you can easily run parameter sweeps using the built-in sweep framework.
 
@@ -11,3 +11,4 @@ Once you have your environment set up, you can easily run parameter sweeps using
 .. automodule:: somo.sweep
    :members:
    :imported-members:
+   :undoc-members:

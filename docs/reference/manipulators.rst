@@ -9,15 +9,19 @@ To actually implement a manipulator, you can define it in a dictionary or yaml/j
 
 .. autoclass:: somo.sm_link_definition.SMLinkDefinition
    :members:
+   :undoc-members:
 
 
 .. autoclass:: somo.sm_joint_definition.SMJointDefinition
    :members:
+   :undoc-members:
 
 
 .. autoclass:: somo.sm_actuator_definition.SMActuatorDefinition
    :members:
+   :undoc-members:
 
 
 .. autoclass:: somo.sm_manipulator_definition.SMManipulatorDefinition
    :members:
+   :undoc-members:

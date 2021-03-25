@@ -2,7 +2,7 @@ SoMo is a light wrapper around pybullet that facilitates
 the simulation of continuum manipulators.
 
 SoMo (**So**\ ft\ **Mo**\ tion) is a framework to facilitate the
-simulation of continuum manipulator (CM) motion in `pybullet`_. In SoMo,
+simulation of continuum manipulator (CM) motion in `pybullet`. In SoMo,
 continuum manipulators are approximated as a series of rigid links
 connected by spring-loaded joints. SoMo makes it easy to create URDFs of
 such approximated manipulators and load them into pybullet’s rigid body
@@ -19,7 +19,7 @@ and controlled with only a few lines of code.
 Quick Install
 =============
 
-..note::
+.. note::
    Coming soon: pip install!
 
 
@@ -38,7 +38,7 @@ Links
 
 **Documentation:** `Read the Docs <https://somo.readthedocs.io/en/latest/>`_
 
-**PyPi (Not Launched Yet):** `somo <https://pypi.org/project/somo/>`_
+**pip install:** `View on PyPi <https://pypi.org/project/somo/>`_ (*Not Launched Yet*)
 
 **Source code:** `Github <https://github.com/graulem/somo>`_
 
@@ -46,7 +46,7 @@ Links
 Contact
 =======
 
-If you have questions, or if you've done something interesting with this package, get in touch! `graulem@g.harvard.edu <mailto:graulem@g.harvard.edu>`_.
+If you have questions, or if you've done something interesting with this package, get in touch with `Moritz Graule <mailto:graulem@g.harvard.edu>`_!
 
 If you find a problem or want something added to the library, `open an issue on Github <https://github.com/graulem/somo/issues>`_.
 
