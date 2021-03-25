@@ -20,6 +20,7 @@ If we scale all lengths by **X**, we need to correct other variables:
 | **Inertias**         | X<sup>2</sup> | I_sim = X<sup>2</sup> \* I_real |
 
 In addition, we could scale masses by a factor **Y**, leading to more corrections:
+
 | **_Property_**       |      **_Scale_** | **_Formula_**                   |
 |----------------------|-----------------:|---------------------------------|
 | **Forces**           | Y | F_sim = Y\*F_real |
@@ -27,6 +28,7 @@ In addition, we could scale masses by a factor **Y**, leading to more correction
 | **Inertias**         | Y | I_sim = Y\*I_real |
 
 Combining length and mass scaling, we get combined corrections:
+
 | **_Property_**       |      **_Scale_** | **_Formula_**                   |
 |----------------------|-----------------:|---------------------------------|
 | **Forces**           | X\*Y | F_sim = X\*Y\*F_real |
