@@ -32,13 +32,16 @@ master_doc = 'index'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['recommonmark',
+extensions = [#'recommonmark',
               'sphinx_markdown_tables',
               'sphinx_copybutton',
               'sphinx.ext.autodoc',
               'sphinx.ext.coverage',
               'sphinx.ext.napoleon',
-              'sphinx.ext.graphviz']
+              'sphinx.ext.graphviz',
+              'm2r2']
+
+source_suffix = [".rst", ".md"]
 
 
 autodoc_mock_imports = ['pandas','seaborn','pathos', 'yaml']

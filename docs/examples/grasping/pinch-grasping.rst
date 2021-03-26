@@ -1,8 +1,0 @@
-
-
-
-Pinch Grasping
-===========
-
-.. note::
-	TODO

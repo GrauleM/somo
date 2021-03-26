@@ -1,6 +1,6 @@
 Somo Framework Example:
 
-# Region of Acquisition
+# Pinch Grasping
 This example shows how to set up a parametric simulation and run multidimensional sweeps over parameters
 
 ## Basic Structure
