@@ -8,6 +8,6 @@ Several examples of the power and versatillity of SoMo are shown here. You can f
     :maxdepth: 2
 
     basic/index
-    grasping/index
+    design_studies/index
     manipulation/index
     locomotion/index

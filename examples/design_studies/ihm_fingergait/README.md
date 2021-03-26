@@ -1,6 +1,6 @@
 Somo Framework Example:
 
-# In-Hand Manipulation - Finger Gait Hardware Validation
+# In-Hand Manipulation: Finger Gait
 We show that using a calibrated soft finger definition, SoMo achieves similar task-level results to real hardware. Using the soft hand with four soft fingers from [Abondance et. al 2020](https://ieeexplore.ieee.org/document/9134855), we apply a finger gait for contiunuous object rotation in hardware and compare it to a simulated hand performing the same gait. The results of simulations look visually similar to real hardware, and the resulting object rotation about is within 9% of the real hardware over the whole trajetory. The off-axis motion is also of the same order of magnitude. These results validate SoMo as a physically-acurate soft robot simulator.
 
 ## Background
