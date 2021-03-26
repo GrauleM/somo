@@ -3,3 +3,4 @@ sphinx-markdown-tables
 sphinx-copybutton
 requirements-parser
 sphinx_rtd_theme
+m2r2
