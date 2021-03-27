@@ -11,7 +11,8 @@ from somo.sweep import iter_utils
 
 
 class BatchSimulation:
-    """Run a batch of simulations
+    """
+    Run a batch of simulations from a todo-list
     """
 
     def __init__(self):
@@ -58,7 +59,6 @@ class BatchSimulation:
 
         Parameters
         ----------
-        
         todo_filename : str
             The name of the file where the list of simulations to run is stored
         recalculate : bool
@@ -77,7 +77,6 @@ class BatchSimulation:
 
         Parameters
         ----------
-
         run_function : function
             A function that runs a single simulation given a set of parameters
         parallel : bool
