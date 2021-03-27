@@ -11,7 +11,8 @@ from somo.sweep import iter_utils
 
 
 class BatchSimulation:
-    """Run a batch of simulations from a todo-list
+    """
+    Run a batch of simulations from a todo-list
     """
 
     def __init__(self):
