@@ -17,8 +17,14 @@ SoMo manipulators are defined as dictionaries describing one or more actuators, 
 
 .. image:: ../img/model_schematic.png
 
-.. note::
-	TODO - will add example yaml file.
+Here is an example of a typical definition of a soft finger made up of one bending actuator. You can copy this or directly download it:
+
+:download:`ihm_finger_def.yaml <../../examples/design_studies/ihm_fingergait/definitions/ihm_finger_def.yaml>` 
+
+.. literalinclude:: ../../examples/design_studies/ihm_fingergait/definitions/ihm_finger_def.yaml
+  :language: yaml
+  :linenos:
+
 
 
 Build a SoMo Manipulator from a definition

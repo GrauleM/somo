@@ -41,8 +41,9 @@ extensions = [#'recommonmark',
               'sphinx.ext.graphviz',
               'm2r2']
 
-source_suffix = [".rst", ".md"]
 
+
+source_suffix = [".rst", ".md"]
 
 autodoc_mock_imports = ['pandas','seaborn','pathos', 'yaml']
 
