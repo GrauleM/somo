@@ -16,6 +16,11 @@ can be created and controlled with only a few lines of code.
 
 ![Palm example](https://github.com/GrauleM/somo/blob/main/docs/img/importance_of_palms.png)
 
+
+## Documentation
+[Documentation on Read-the-Docs](https://somo.readthedocs.io/en/latest/)
+
+
 **Todos:** see [todos.md](todos.md)
 
 ## Installation
