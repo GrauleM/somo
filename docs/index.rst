@@ -20,4 +20,5 @@ SoMo: Fast, Accurate Simulations of Continuum Robots in Complex Environments
 
 
 .. include:: description.rst
+.. include:: videos.rst
 
