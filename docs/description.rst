@@ -1,6 +1,4 @@
 
-.. image:: img/rubiks_cross_new_wide_crop.jpg
-
 SoMo is a light wrapper around pybullet that facilitates
 the simulation of continuum manipulators.
 
