@@ -1,3 +1,6 @@
+
+.. image:: img/rubiks_cross_new_wide_crop.jpg
+
 SoMo is a light wrapper around pybullet that facilitates
 the simulation of continuum manipulators.
 
@@ -9,11 +12,6 @@ such approximated manipulators and load them into pybullet’s rigid body
 simulator. With SoMo, environments with various continuum manipulators
 (such as hands with soft fingers or snakes) can be created
 and controlled with only a few lines of code.
-
-
-
-.. image:: img/importance_of_palms.png
-
 
 
 Quick Install
