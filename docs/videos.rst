@@ -1,4 +1,4 @@
-Examples
+SoMo in Action
 =====
 
 .. raw:: html

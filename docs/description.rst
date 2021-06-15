@@ -12,8 +12,27 @@ simulator. With SoMo, environments with various continuum manipulators
 and controlled with only a few lines of code.
 
 
+
+
+
+.. dropdown:: Table of Contents
+    :title: text-info font-weight-bold
+
+	.. toctree::
+	   :maxdepth: 2
+	   :titlesonly:
+
+	   getting_started/index
+	   examples/index
+	   reference/index
+	   contributing
+
+
+
 Quick Install
 =============
+
+Check out the :ref:`Installation Instructions <installation>`
 
 .. note::
    Coming soon: pip install!
@@ -21,10 +40,10 @@ Quick Install
 
 
 
-Explore the examples
+Explore the Examples
 ====================
 
-Run any of the files in the examples folder. "examples/basic" is a great place to start!
+Check out the :ref:`Examples <examples>`, or run any of the files in the examples folder. "examples/basic" is a great place to start!
 
 
 
@@ -32,11 +51,9 @@ Run any of the files in the examples folder. "examples/basic" is a great place t
 Links
 =====
 
-**Documentation:** `Read the Docs <https://somo.readthedocs.io/en/latest/>`_
-
-**pip install:** `View on PyPi <https://pypi.org/project/somo/>`_ (*Not Launched Yet*)
-
-**Source code:** `Github <https://github.com/graulem/somo>`_
+- **Documentation:** `Read the Docs <https://somo.readthedocs.io/en/latest/>`_
+- **pip install:** `View on PyPi <https://pypi.org/project/somo/>`_ (*Not Launched Yet*)
+- **Source code:** `Github <https://github.com/graulem/somo>`_
 
 
 Contact
@@ -51,6 +68,8 @@ If you find a problem or want something added to the library, `open an issue on 
 Citation
 =========
 
+When citing SoMo, use this citation:
+
 .. code-block:: console
   
    @inproceedings{graule2020somo,
@@ -61,3 +80,13 @@ Citation
       year={2021},
       organization={IEEE}
    }
+
+
+Cited In...
+===========
+
+SoMo has enabled other work:
+
+- C.B. Teeple, R.C. St. Louis, M.A Graule, and R.J. Wood, **Digit Arrangement for Soft Robotic Hands: Enhancing Dexterous In-Hand Manipulation**, In Review, IROS 2021
+- C.B. Teeple, G.R. Kim, M.A Graule, and R.J. Wood, **An Active Palm Enhances Dexterity for Soft Robotic In-Hand Manipulation**, ICRA 2021
+

@@ -39,7 +39,39 @@ extensions = [#'recommonmark',
               'sphinx.ext.coverage',
               'sphinx.ext.napoleon',
               'sphinx.ext.graphviz',
+              'sphinx.ext.mathjax',
+              'sphinxcontrib.bibtex',
+              'sphinx_panels',
               'm2r2']
+
+
+
+bibtex_bibfiles = ['refs.bib']
+bibtex_default_style = 'bibtexlabels'
+bibtex_reference_style = 'author_year'
+
+
+import pybtex.plugin
+from pybtex.style.formatting.unsrt import Style as UnsrtStyle
+from pybtex.style.labels import BaseLabelStyle
+from pybtex.plugin import register_plugin
+
+class MyLabelStyle(BaseLabelStyle):
+
+    def format_labels(self, sorted_entries):
+        for entry in sorted_entries:
+            yield entry.key
+
+
+class MyStyle(UnsrtStyle):
+    default_label_style = MyLabelStyle
+
+register_plugin('pybtex.style.formatting', 'bibtexlabels', MyStyle)
+
+
+
+
+
 
 
 
