@@ -1,0 +1,190 @@
+# Manipulator Definition
+
+# Author: Moritz A. Graule
+# Date:   08/08/2021
+# Description:
+#     This manipulator definition describes the arm used in the basketball example
+#     in the paper "SoMo:  Fast  and  Accurate  Simulations  of  Continuum  Robots
+#     in  Complex  Environments" (IROS 2021)
+
+# NOTE: Remember to scale your geometry, stiffnesses, positions, and forces
+# by the global scaling factor; no need to scale masses.
+
+manipulator_name:      "bb_arm"
+urdf_filename:         "bb_arm.urdf"
+n_act:                  5
+
+# Define the actuators. this is a list of 5 actuator definitions
+actuator_definitions:
+
+  # Actuator 0
+  - actuator_length: 1.5
+    n_segments: 10
+    planar_flag: 0
+
+    # Define the link sub-unit for each actuator
+    # The link height (z-dimension) times n_segments must equal the actuator length
+    link_definition:
+        shape_type: "stadium"
+        dimensions: [ 0.4,0.4,0.15 ]
+        mass: 0.15
+        inertial_values: [ 1, 0, 0, 1, 0, 1 ]
+        material_color: [ 0.3, 0.0, 1, 1.0 ]
+        material_name: "blue"
+
+    joint_definitions:
+        # Define joint type 1
+        - joint_type: "revolute"
+          axis: [ 1, 0, 0 ]
+          limits: [ -3.141592, 3.141592, 100, 3 ]
+          spring_stiffness: 1000
+          joint_neutral_position: 0
+          joint_control_limit_force: 1.
+
+        # Define joint type 2
+        - joint_type: "revolute"
+          axis: [ 0, 1, 0 ]
+          limits: [ -3.141592, 3.141592, 100, 3 ]
+          spring_stiffness: 1000
+          joint_neutral_position: 0
+          joint_control_limit_force: 1.
+
+  # Actuator 1
+  - actuator_length: 1.5
+    n_segments: 10
+    planar_flag: 0
+
+    # Define the link sub-unit for each actuator
+    # The link height (z-dimension) times n_segments must equal the actuator length
+    link_definition:
+        shape_type: "stadium"
+        dimensions: [ 0.4,0.4,0.15 ]
+        mass: 0.15
+        inertial_values: [ 1, 0, 0, 1, 0, 1 ]
+        material_color: [ 0.3, 0.0, 1, 1.0 ]
+        material_name: "blue"
+
+    joint_definitions:
+        # Define joint type 1
+        - joint_type: "revolute"
+          axis: [ 1, 0, 0 ]
+          limits: [ -3.141592, 3.141592, 100, 3 ]
+          spring_stiffness: 1000
+          joint_neutral_position: 0
+          joint_control_limit_force: 1.
+
+        # Define joint type 2
+        - joint_type: "revolute"
+          axis: [ 0, 1, 0 ]
+          limits: [ -3.141592, 3.141592, 100, 3 ]
+          spring_stiffness: 1000
+          joint_neutral_position: 0
+          joint_control_limit_force: 1.
+
+  # Actuator 2
+  - actuator_length: 1.5
+    n_segments: 10
+    planar_flag: 0
+
+    # Define the link sub-unit for each actuator
+    # The link height (z-dimension) times n_segments must equal the actuator length
+    link_definition:
+        shape_type: "stadium"
+        dimensions: [ 0.4,0.4,0.15 ]
+        mass: 0.15
+        inertial_values: [ 1, 0, 0, 1, 0, 1 ]
+        material_color: [ 0.3, 0.0, 1, 1.0 ]
+        material_name: "blue"
+
+    joint_definitions:
+        # Define joint type 1
+        - joint_type: "revolute"
+          axis: [ 1, 0, 0 ]
+          limits: [ -3.141592, 3.141592, 100, 3 ]
+          spring_stiffness: 1000
+          joint_neutral_position: 0
+          joint_control_limit_force: 1.
+
+        # Define joint type 2
+        - joint_type: "revolute"
+          axis: [ 0, 1, 0 ]
+          limits: [ -3.141592, 3.141592, 100, 3 ]
+          spring_stiffness: 1000
+          joint_neutral_position: 0
+          joint_control_limit_force: 1.
+
+  # Actuator 3
+  - actuator_length: 1.5
+    n_segments: 10
+    planar_flag: 0
+
+    # Define the link sub-unit for each actuator
+    # The link height (z-dimension) times n_segments must equal the actuator length
+    link_definition:
+        shape_type: "stadium"
+        dimensions: [ 0.4,0.4,0.15 ]
+        mass: 0.15
+        inertial_values: [ 1, 0, 0, 1, 0, 1 ]
+        material_color: [ 0.3, 0.0, 1, 1.0 ]
+        material_name: "blue"
+
+    joint_definitions:
+        # Define joint type 1
+        - joint_type: "revolute"
+          axis: [ 1, 0, 0 ]
+          limits: [ -3.141592, 3.141592, 100, 3 ]
+          spring_stiffness: 1000
+          joint_neutral_position: 0
+          joint_control_limit_force: 1.
+
+        # Define joint type 2
+        - joint_type: "revolute"
+          axis: [ 0, 1, 0 ]
+          limits: [ -3.141592, 3.141592, 100, 3 ]
+          spring_stiffness: 1000
+          joint_neutral_position: 0
+          joint_control_limit_force: 1.
+
+  # Actuator 4
+  - actuator_length: 1.5
+    n_segments: 10
+    planar_flag: 0
+
+    # Define the link sub-unit for each actuator
+    # The link height (z-dimension) times n_segments must equal the actuator length
+    link_definition:
+        shape_type: "stadium"
+        dimensions: [ 0.4,0.4,0.15 ]
+        mass: 0.15
+        inertial_values: [ 1, 0, 0, 1, 0, 1 ]
+        material_color: [ 0.3, 0.0, 1, 1.0 ]
+        material_name: "blue"
+
+    joint_definitions:
+        # Define joint type 1
+        - joint_type: "revolute"
+          axis: [ 1, 0, 0 ]
+          limits: [ -3.141592, 3.141592, 100, 3 ]
+          spring_stiffness: 1000
+          joint_neutral_position: 0
+          joint_control_limit_force: 1.
+
+        # Define joint type 2
+        - joint_type: "revolute"
+          axis: [ 0, 1, 0 ]
+          limits: [ -3.141592, 3.141592, 100, 3 ]
+          spring_stiffness: 1000
+          joint_neutral_position: 0
+          joint_control_limit_force: 1.
+
+# Define the base link
+base_definition:
+  shape_type: "box"
+  dimensions: [ 0.5, 0.5, 0.3 ]
+  mass: 1.350
+  inertial_values: [ 1, 0, 0, 1, 0, 1 ]
+  material_color: [ 0.3, 0.0, 1, 1.0 ]
+  material_name: "blue"
+
+# Define the tip link. For fingers, use this to define the fingertip.
+tip_definition: "" # this means no tip link

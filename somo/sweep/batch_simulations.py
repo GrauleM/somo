@@ -11,17 +11,11 @@ from somo.sweep import iter_utils
 
 
 class BatchSimulation:
-    """
-    Run a batch of simulations from a todo-list
-    """
-
     def __init__(self):
         self.num_cpus = os.cpu_count()
 
-
     def mute(self):
         sys.stdout = open(os.devnull, "w")
-
 
     # Define the parallelization function
     def _run_parallel(self, run_function, num_processes=None):
@@ -43,7 +37,6 @@ class BatchSimulation:
 
         return True
 
-
     def _run_sequential(self, run_function):
         """Explicitly run the batch sequentially"""
 
@@ -52,38 +45,15 @@ class BatchSimulation:
 
         return True
 
-
     def load_run_list(self, todo_filename="runs_todo.yaml", recalculate=False):
-        """
-        Load the list of simulations to run
-
-        Parameters
-        ----------
-        todo_filename : str
-            The name of the file where the list of simulations to run is stored
-        recalculate : bool
-            Decide whether to overwrite existing data
-        """
         runs_todo = iter_utils.load_yaml(todo_filename)
         self.run_params = [
             {"filename": run, "index": idx, "replace": recalculate}
             for run, idx in zip(runs_todo, range(len(runs_todo)))
         ]
 
-
     def run(self, run_function, parallel=True, num_processes=None):
-        """
-        Run a batch of experiments
-
-        Parameters
-        ----------
-        run_function : function
-            A function that runs a single simulation given a set of parameters
-        parallel : bool
-            Decide whether to use parallel processing (via the mupltiprocess library)
-        num_processes : int
-            The number of processes to use when parallel processing. Ususally you want this to be the number of CPU cores you have.
-        """
+        # Run experiments
         try:
             iter_utils.add_tmp("_tmp")
             start = time.time()

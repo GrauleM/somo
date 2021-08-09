@@ -78,6 +78,45 @@ def make_inertia_dict(inertia_list):
     return inertia_dict
 
 
+def create_scaled_shape_dimension_dict(
+    shape_type, dimensions, overall_scaling_factor=1.0, height_scaling_factor=1.0
+):
+    dimensions = [x * overall_scaling_factor for x in dimensions]
+    # assert that the specified shape and dimensions match and create shape_dimensions_dict & height attribute
+    if shape_type == "box" or shape_type == "stadium":
+        assert (
+            len(dimensions) == 3
+        ), f"dimension must have length 3 for link_type {shape_type}"
+        dimensions = [
+            dimensions[0],
+            dimensions[1],
+            dimensions[2] * height_scaling_factor,
+        ]
+        shape_dimensions_dict = {"size": spaced_str(dimensions)}
+        height = dimensions[2]
+    elif shape_type in ["cylinder", "capsule"]:
+        dimensions = [dimensions[0] * height_scaling_factor, dimensions[1]]
+        assert (
+            len(dimensions) == 2
+        ), f"dimension must have length 2 for link_type {shape_type}"
+        shape_dimensions_dict = {
+            "length": str(dimensions[0]),
+            "radius": str(dimensions[1]),
+        }
+        height = dimensions[0]
+    elif shape_type == "sphere":
+        dimensions = [dimensions[0] * height_scaling_factor]
+        assert (
+            len(dimensions) == 1
+        ), f"dimension must have length 1 for link_type {shape_type}"
+        shape_dimensions_dict = {"radius": str(dimensions[0])}
+        height = 2 * dimensions[0]
+    else:
+        assert False, f"link shape {shape_type} is not defined"
+
+    return dimensions, shape_dimensions_dict, height
+
+
 ######### utilities to simplify setting up everything in pybullet #########
 
 
@@ -106,7 +145,7 @@ def dict_from_file(file_path):
         if file_path.endswith(".json"):
             in_dict = json.load(file)
         elif file_path.endswith(".yaml"):
-            in_dict = yaml.load(file)
+            in_dict = yaml.load(file, Loader=yaml.FullLoader)
         else:
             print("Please use a json or yaml file")
             raise

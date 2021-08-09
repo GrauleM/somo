@@ -63,7 +63,7 @@ class SMManipulatorDefinition:
             base_definition = SMLinkDefinition(**base_definition)
         elif isinstance(base_definition, str):
             if (
-                base_definition is ""
+                base_definition == ""
             ):  # an empty string is interpreted as None / no base
                 base_definition = None
             else:
@@ -74,7 +74,7 @@ class SMManipulatorDefinition:
             tip_definition = SMLinkDefinition(**tip_definition)
         elif isinstance(tip_definition, str):
             if (
-                tip_definition is ""
+                tip_definition == ""
             ):  # an empty string is interpreted as None / no dedicated tip
                 tip_definition = None
             else:

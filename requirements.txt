@@ -10,3 +10,4 @@ sorotraj==0.9
 object2urdf==0.2
 pylint==2.6.0
 natsort
+pytest

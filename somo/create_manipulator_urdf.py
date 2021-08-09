@@ -53,6 +53,8 @@ def add_link(robot_root, link_name, link_definition: SMLinkDefinition, origin):
 
     # todo: assertions, in particular that it is a valid SMLinkDefinition? add ability to have a dict or json file that defines an SMLinkDefinition.
 
+    # todo: the visual geometry scaler should maybe happen directly in link definition, and not here...
+
     mass_dict = {"value": str(link_definition.mass)}
     origin_dict = {"xyz": spaced_str(origin[:3]), "rpy": spaced_str(origin[3:])}
 
@@ -63,7 +65,9 @@ def add_link(robot_root, link_name, link_definition: SMLinkDefinition, origin):
     vis_geom = ET.SubElement(visual, "geometry")
 
     vis_box = ET.SubElement(
-        vis_geom, link_definition.shape_type, link_definition.shape_dimensions_dict
+        vis_geom,
+        link_definition.shape_type,
+        link_definition.visual_shape_dimensions_dict,
     )
     vis_mat = ET.SubElement(visual, "material", {"name": link_definition.material_name})
     vis_mat_col = ET.SubElement(
@@ -74,7 +78,9 @@ def add_link(robot_root, link_name, link_definition: SMLinkDefinition, origin):
     col_orig = ET.SubElement(collision, "origin", origin_dict)
     col_geom = ET.SubElement(collision, "geometry")
     col_box = ET.SubElement(
-        col_geom, link_definition.shape_type, link_definition.shape_dimensions_dict
+        col_geom,
+        link_definition.shape_type,
+        link_definition.contact_shape_dimensions_dict,
     )
 
     inertial = ET.SubElement(link, "inertial")
@@ -130,6 +136,8 @@ def add_empty_link(robot_root, link_name):
     link = ET.SubElement(robot_root, "link", {"name": link_name})
     return link
 
+
+# TODO: add assertion for stadium geometry to require certain height in each element bcs otherwise we get weird behavior
 
 # todo: creation of base or links is not handled correctly for spherical links. add warning. fix eventually.
 def create_manipulator_urdf(
@@ -219,15 +227,14 @@ def create_manipulator_urdf(
                 link_to_add.shape_type = "box"
 
             elif actuator_definition.link_definition.shape_type in ["capsule"]:
-                link_to_add = copy.copy(actuator_definition.link_definition)
+                link_to_add = copy.deepcopy(actuator_definition.link_definition)
                 link_to_add.shape_type = "cylinder"
 
-            # pdb.set_trace()
             if segment_nr == 0:
-                link_to_add.reduce_height(height_fraction=0.5)
+                link_to_add.reduce_height(height_scaling_factor=0.5)
                 joint_to_add.joint_type = "fixed"
             elif segment_nr == actuator_definition.n_segments:
-                link_to_add.reduce_height(height_fraction=0.5)
+                link_to_add.reduce_height(height_scaling_factor=0.5)
 
             add_joint_link_pair(
                 robot_root=robot,
@@ -250,7 +257,6 @@ def create_manipulator_urdf(
                 if actuator_definition.link_definition.shape_type in ["stadium"]:
 
                     helper_shape = "cylinder"
-                    # helper_shape_height = actuator_definition.link_definition.dimensions[1]
 
                     if joint_to_add.axis == [1, 0, 0]:
                         additional_link_origin_rotation = [0, 0, 0, 0, np.pi / 2, 0]
@@ -265,9 +271,13 @@ def create_manipulator_urdf(
                             actuator_definition.link_definition.dimensions[0] / 2.0,
                         ]
                     else:
-                        assert f"shape type 'stadium' only works with joint axis with direction [1,0,0] or [0,1,0] that do not have an offset from neutral axis"  # xx todo: add this as an assertion when defining the actator
+                        assert (
+                            Fasle
+                        ), f"shape type 'stadium' only works with joint axis with direction [1,0,0] or [0,1,0] that do not have an offset from neutral axis"  # xx todo: add this as an assertion when defining the actuator
 
-                    helper_shape_height = dim[1] * 2
+                    helper_shape_height = dim[
+                        0
+                    ]  # careful: the helper shape cylinders are rotated, so their height is the radius
 
                 elif actuator_definition.link_definition.shape_type in ["capsule"]:
                     dim = [actuator_definition.link_definition.dimensions[1]]
@@ -277,6 +287,7 @@ def create_manipulator_urdf(
                         2 * actuator_definition.link_definition.dimensions[1]
                     )
 
+                # pdb.set_trace()
                 helper_offset = [
                     x - y - z
                     for x, y, z in zip(
@@ -285,7 +296,7 @@ def create_manipulator_urdf(
                         [0, 0, helper_shape_height / 2.0, 0, 0, 0],
                     )
                 ]
-
+                # pdb.set_trace()
                 additional_link_to_add = SMLinkDefinition(
                     shape_type=helper_shape,
                     dimensions=dim,
@@ -298,6 +309,7 @@ def create_manipulator_urdf(
                     material_color=actuator_definition.link_definition.material_color,
                     material_name=actuator_definition.link_definition.material_name,
                     origin_offset=helper_offset,
+                    visual_geometry_scaling_factor=1.0,  # todo: give option to scale visualized geometry overall and in height only
                 )
 
                 additional_joint_to_add = SMJointDefinition(

@@ -20,10 +20,10 @@ manipulator_definition = SMManipulatorDefinition.from_file("finger_def.yaml")
 # offset_2= [1, 1, 0, np.pi/4, 0, np.pi]
 # offset_3= [0, 1, 0, np.pi/4, 0, np.pi]
 
-offset_0= [1, 0, 1, np.pi/3, 0, 0]
-offset_1= [0, 1, 1, 0, 0, 0]
-offset_2= [1, 1, 1, np.pi/3, 0, np.pi/3]
-offset_3= [0, 1, 1, -np.pi/3, -np.pi/3, np.pi/3]
+offset_0 = [1, 0, 1, np.pi / 3, 0, 0]
+offset_1 = [0, 1, 1, 0, 0, 0]
+offset_2 = [1, 1, 1, np.pi / 3, 0, np.pi / 3]
+offset_3 = [0, 1, 1, -np.pi / 3, -np.pi / 3, np.pi / 3]
 
 # offset_0= [1, 0, 1, 0*np.pi/4, 0, 0]
 # offset_1= [0, 0, 1, 0*np.pi/4, 0, 0]
@@ -34,33 +34,39 @@ offset_3= [0, 1, 1, -np.pi/3, -np.pi/3, np.pi/3]
 base_link1 = SMLinkDefinition(
     shape_type="sphere",
     dimensions=[1],
-    mass=1.,
-    material_color=[.8,.8,.8,1],
-    inertial_values=[1,0,0,1,0,1],
-    material_name='base_color',
-    origin_offset=[.5,0.5,1,0,0,0])
+    mass=1.0,
+    material_color=[0.8, 0.8, 0.8, 1],
+    inertial_values=[1, 0, 0, 1, 0, 1],
+    material_name="base_color",
+    origin_offset=[0.5, 0.5, 1, 0, 0, 0],
+)
 
 base_link2 = SMLinkDefinition(
     shape_type="box",
-    dimensions=[2,2,2],
-    mass=1.,
-    material_color=[.8,.8,.8,1],
-    inertial_values=[1,0,0,1,0,1],
-    material_name='base_color',
-    origin_offset=[.5,0.5,0,0,0,0])
+    dimensions=[2, 2, 2],
+    mass=1.0,
+    material_color=[0.8, 0.8, 0.8, 1],
+    inertial_values=[1, 0, 0, 1, 0, 1],
+    material_name="base_color",
+    origin_offset=[0.5, 0.5, 0, 0, 0, 0],
+)
 
-test_urdf = create_cmassembly_urdf(base_links=[base_link1,base_link2], manipulator_definition_pairs=[
-    (manipulator_definition, offset_0),
-    (manipulator_definition, offset_1),
-    (manipulator_definition, offset_2),
-    (manipulator_definition, offset_3)],
-                                   assembly_name="hand_test")
+test_urdf = create_cmassembly_urdf(
+    base_links=[base_link1, base_link2],
+    manipulator_definition_pairs=[
+        (manipulator_definition, offset_0),
+        (manipulator_definition, offset_1),
+        (manipulator_definition, offset_2),
+        (manipulator_definition, offset_3),
+    ],
+    assembly_name="hand_test",
+)
 
 
 # prepare everything for the physics client
 physicsClient = p.connect(
-        p.GUI
-    )  # p.GUI for graphical, or p.DIRECT for non-graphical version
+    p.GUI
+)  # p.GUI for graphical, or p.DIRECT for non-graphical version
 n_steps = 1500000
 
 p.setGravity(0, 0, -10)

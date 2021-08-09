@@ -91,8 +91,8 @@ def add_joint_link_pair(
     joint_name,
     link: SMLinkDefinition,
     joint: SMJointDefinition,
-    previous_link: SMLinkDefinition, # xx todo: add none default with proper typing
-    previous_joint: SMJointDefinition, # xx todo: add none default with proper typing
+    previous_link: SMLinkDefinition,  # xx todo: add none default with proper typing
+    previous_joint: SMJointDefinition,  # xx todo: add none default with proper typing
 ):
     """
     helps making the urdf generation easier to read.
@@ -101,13 +101,24 @@ def add_joint_link_pair(
 
     if previous_link is None:
         segment_origin = [0, 0, 0, 0, 0, 0]
-        joint_origin = [0, 0, 0, 0, 0,
-                        0]  # xx todo: see if this can be cleaned up - maybe we can avoid the previous link height
+        joint_origin = [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+        ]  # xx todo: see if this can be cleaned up - maybe we can avoid the previous link height
     else:
         segment_origin = [0, 0, link.height / 2.0, 0, 0, 0]
-        joint_origin = [0, 0, previous_link.height, 0, 0,
-                        0]  # xx todo: see if this can be cleaned up - maybe we can avoid the previous link height
-
+        joint_origin = [
+            0,
+            0,
+            previous_link.height,
+            0,
+            0,
+            0,
+        ]  # xx todo: see if this can be cleaned up - maybe we can avoid the previous link height
 
     # adjust segment and joint origins for shifted neutral axis
     segment_origin = [
@@ -117,17 +128,14 @@ def add_joint_link_pair(
         )
     ]
     if previous_joint is None:
-        joint_origin = [
-            x + y
-            for x, y in zip(
-                joint_origin, joint.neutral_axis_offset
-            )
-        ]
+        joint_origin = [x + y for x, y in zip(joint_origin, joint.neutral_axis_offset)]
     else:
         joint_origin = [
             x + y - z
             for x, y, z in zip(
-                joint_origin, joint.neutral_axis_offset, previous_joint.neutral_axis_offset
+                joint_origin,
+                joint.neutral_axis_offset,
+                previous_joint.neutral_axis_offset,
             )
         ]
 
@@ -151,7 +159,6 @@ def create_cmassembly_urdf(
     base_links: [SMLinkDefinition],  # todo: fix typing hints
     manipulator_definition_pairs: [(SMManipulatorDefinition, [float])],
     assembly_name: str = "cm_assembly",
-
 ):
     """creates a manipulator. xx todo: add more documentation"""
 
@@ -179,7 +186,7 @@ def create_cmassembly_urdf(
     parent_name = base_link_name
     if base_links is not None:
         for i, link_def in enumerate(base_links):
-            child_name = "base_link"+str(i)
+            child_name = "base_link" + str(i)
             joint_to_add = SMJointDefinition(joint_type="fixed")
             link_to_add = copy.copy(link_def)
             joint_name = parent_name + "_to_" + child_name + "_fixed"
@@ -195,7 +202,6 @@ def create_cmassembly_urdf(
                 previous_joint=None,
             )
 
-
     for manip_nr, manipulator_offset_pair in enumerate(manipulator_definition_pairs):
 
         # link each manipulator to the base
@@ -207,17 +213,36 @@ def create_cmassembly_urdf(
 
         manipulator_definition = manipulator_offset_pair[0]
         manipulator_offset = manipulator_offset_pair[1]
-        roll, pitch, yaw = manipulator_offset[3], manipulator_offset[4], manipulator_offset[5]
-        roll_rot = np.array([[1, 0, 0],[0, np.cos(roll), -np.sin(roll)],[0, np.sin(roll), np.cos(roll)]])
-        pitch_rot = np.array([[np.cos(pitch), 0, np.sin(pitch)],[0,1,0],[-np.sin(pitch),0,np.cos(pitch)]])
-        yaw_rot = np.array([[np.cos(yaw),-np.sin(yaw),0],[np.sin(yaw), np.cos(yaw), 0],[0, 0, 1]])
+        roll, pitch, yaw = (
+            manipulator_offset[3],
+            manipulator_offset[4],
+            manipulator_offset[5],
+        )
+        roll_rot = np.array(
+            [
+                [1, 0, 0],
+                [0, np.cos(roll), -np.sin(roll)],
+                [0, np.sin(roll), np.cos(roll)],
+            ]
+        )
+        pitch_rot = np.array(
+            [
+                [np.cos(pitch), 0, np.sin(pitch)],
+                [0, 1, 0],
+                [-np.sin(pitch), 0, np.cos(pitch)],
+            ]
+        )
+        yaw_rot = np.array(
+            [[np.cos(yaw), -np.sin(yaw), 0], [np.sin(yaw), np.cos(yaw), 0], [0, 0, 1]]
+        )
 
-        rot = np.matmul(np.matmul(roll_rot,pitch_rot),yaw_rot)
-        z_vec = np.array([[0],[0],[1]])
-        manip_principle_axis = np.matmul(rot,z_vec)
+        rot = np.matmul(np.matmul(roll_rot, pitch_rot), yaw_rot)
+        z_vec = np.array([[0], [0], [1]])
+        manip_principle_axis = np.matmul(rot, z_vec)
 
         for actuator_definition, actuator_nr in zip(
-            manipulator_definition.actuator_definitions, range(manipulator_definition.n_act)
+            manipulator_definition.actuator_definitions,
+            range(manipulator_definition.n_act),
         ):
 
             for segment_nr in range(
@@ -240,14 +265,25 @@ def create_cmassembly_urdf(
 
                     if actuator_definition.planar_flag or segment_nr % 2:
                         ax_str = "_ax0"
-                        joint_to_add = copy.copy(actuator_definition.joint_definitions[0])
+                        joint_to_add = copy.copy(
+                            actuator_definition.joint_definitions[0]
+                        )
 
                     else:
                         ax_str = "_ax1"
-                        joint_to_add = copy.copy(actuator_definition.joint_definitions[1])
+                        joint_to_add = copy.copy(
+                            actuator_definition.joint_definitions[1]
+                        )
 
                 # finalize all the naming
-                segment_name = "Man"+str(manip_nr)+"Act" + str(actuator_nr) + "Seg" + str(segment_nr)
+                segment_name = (
+                    "Man"
+                    + str(manip_nr)
+                    + "Act"
+                    + str(actuator_nr)
+                    + "Seg"
+                    + str(segment_nr)
+                )
                 parent_name = child_name
                 child_name = segment_name
                 joint_name = parent_name + "_to_" + child_name + ax_str
@@ -273,12 +309,28 @@ def create_cmassembly_urdf(
                     link_to_add.reduce_height(height_fraction=0.5)
                     joint_to_add.joint_type = "fixed"
                     # add a correction in the position offset to account for the effect of the euler angles
-                    pos_correction = 20*np.squeeze(np.matmul(rot,z_vec)*link_to_add.height) # correct for the offset from the euler angles
-                    pos_correction = [0,0,0]
-                    correction = [pos_correction[0], pos_correction[1], pos_correction[2], 0, 0, 0]
+                    pos_correction = 20 * np.squeeze(
+                        np.matmul(rot, z_vec) * link_to_add.height
+                    )  # correct for the offset from the euler angles
+                    pos_correction = [0, 0, 0]
+                    correction = [
+                        pos_correction[0],
+                        pos_correction[1],
+                        pos_correction[2],
+                        0,
+                        0,
+                        0,
+                    ]
                     # import pdb
                     # pdb.set_trace()
-                    joint_to_add.neutral_axis_offset = [x-y-z for x,y,z in zip(joint_to_add.neutral_axis_offset, manipulator_offset, correction)]
+                    joint_to_add.neutral_axis_offset = [
+                        x - y - z
+                        for x, y, z in zip(
+                            joint_to_add.neutral_axis_offset,
+                            manipulator_offset,
+                            correction,
+                        )
+                    ]
                 elif segment_nr == actuator_definition.n_segments:
                     link_to_add.reduce_height(height_fraction=0.5)
 
@@ -374,7 +426,7 @@ def create_cmassembly_urdf(
                 previous_link = link_to_add
 
         if manipulator_definition.tip_definition:
-            tip_link_name = "Man"+str(manip_nr)+"_tip"
+            tip_link_name = "Man" + str(manip_nr) + "_tip"
             parent_name = child_name
             child_name = tip_link_name
             joint_name = parent_name + "_to_" + child_name

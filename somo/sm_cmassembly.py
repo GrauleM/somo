@@ -1,4 +1,4 @@
-'''
+"""
 SoMo Continuum Manipulator assembly
 
 0. ensure that the provided ManipulatorDefinitions dont have bases
@@ -8,6 +8,4 @@ SoMo Continuum Manipulator assembly
 2. loop over all pairs (SMManipulatorDefinition, origin_offset)
 
 
-'''
-
-
+"""

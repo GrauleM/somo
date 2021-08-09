@@ -119,6 +119,8 @@ class SMContinuumManipulator:
         # self.passive_torque_fn = compute_linSpring_joint_torque  # xx todo: expand and refactor do make it easy to use other fns. maybe this should be a new class?
         # todo: give the option to pass in the torque function?
 
+        self.instantiated = False
+
     def load_to_pybullet(
         self, baseStartPos, baseStartOrn, baseConstraint, physicsClient, flags=None
     ):
@@ -132,11 +134,11 @@ class SMContinuumManipulator:
             "static",
         ], f"{baseConstraint} has to be either 'constrained','free', or 'static'"  # xx todo: make enum?
 
-        if baseConstraint is "static":
+        if baseConstraint == "static":
             static_base = 1
             constrained_base = 0
 
-        elif baseConstraint is "constrained":
+        elif baseConstraint == "constrained":
             print(
                 "you provided a constrained base, but not a static base. if you do not anticipate moving the manipulator by modifying it's base constraint within the simulation loop, "
                 "it is highly recommended to use a static base instead."
@@ -176,7 +178,7 @@ class SMContinuumManipulator:
         num_joints = p.getNumJoints(
             bodyUniqueId=self.bodyUniqueId, physicsClientId=physicsClient
         )
-        # todo: comment
+        # todo: comment to explain logic
         for joint in range(num_joints):
 
             info = p.getJointInfo(
@@ -288,6 +290,7 @@ class SMContinuumManipulator:
         self.baseConstraintUniqueId = constId  # todo: unify naming convention
 
         # todo: set collision filter for the capsule and stadium geometry to make sure that there is no collision with the parent link and the helper geometry (ball/circle) when self-collision is on
+        self.instantiated = True
 
         return
 
@@ -328,7 +331,7 @@ class SMContinuumManipulator:
             apply_zero_torques=False,
         )
 
-    # todo: disentangle apply_actuation_torque and apply_passive_torque and make sure recursion cannot occur.
+    # todo: disentangle apply_actuation_torque and apply_passive_torque and make sure infinite recursion cannot occur.
 
     # todo: type annotation
     def apply_actuation_torques(
@@ -468,9 +471,19 @@ class SMContinuumManipulator:
             bodyIndex=self.bodyUniqueId, jointIndices=jointIds, forces=limit_forces
         )
 
+    def set_contact_property(self, property_dict):
+        # todo: assert that dict only has valid keys
+        # todo: test this with the snake example
+        for i in range(p.getNumJoints(self.bodyUniqueId)):
+            p.changeDynamics(
+                self.bodyUniqueId,
+                i,
+                **property_dict,
+            )
+
     def get_backbone_position(self, s):
 
-        # todo: does not work properly yet is s = manipulator_length (related to need to making this more precise)
+        # todo: does not work properly yet if s = manipulator_length (related to need to making this more precise)
         i = 0
         while (
             self.linkId_to_arcLength[i] < s
@@ -482,3 +495,32 @@ class SMContinuumManipulator:
         link_pos = linkState[0]
 
         return link_pos
+
+    # lists all link positions; todo: make sure this does not return the positions of helper shapes
+    def get_backbone_positions(self):
+        positions = []
+        for ind in range(len(self.linkId_to_arcLength)):
+            linkState = p.getLinkState(bodyUniqueId=self.bodyUniqueId, linkIndex=ind)
+            link_pos = linkState[0]
+            positions.append(link_pos)
+        return positions
+
+    # lists all the angles of the flexible joins. todo: be careful when using this in non-planar manipulators
+    def get_backbone_angles(self):
+        angles = []
+        for ind in self.flexible_joint_indices:
+            jointState = p.getJointState(self.bodyUniqueId, ind)
+            jointPos = jointState[0]
+            angles.append(jointPos)
+        return angles
+
+    def get_backbone_curvatures(self):
+        print("WARNING: offset by a constant factor")
+        curvatures = []
+        for ind in self.flexible_joint_indices:
+            jointState = p.getJointState(self.bodyUniqueId, ind)
+            segment_length = 1  # TODO: add correct segment length
+            angle = jointState[0]
+            curvature = np.cos(angle / 2) / (segment_length / 2)
+            curvatures.append(curvature)
+        return curvatures

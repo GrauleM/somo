@@ -1,0 +1,22 @@
+<robot name="ball">
+	<link name="_name">
+		<visual>
+			<origin rpy="0 0 0" xyz="2.557086257603153e-07 -1.8857761320510345e-07 -0.995153272419358" />
+			<geometry>
+				<mesh filename="ball/basketball_corrected.obj" scale="1.0 1.0 1.0" />
+			</geometry>
+			<material name="texture">
+				<color rgba="1.0 1.0 1.0 1.0" />
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+				<mesh filename="ball/basketball_corrected_vhacd.obj" scale="1.0 1.0 1.0" />
+			</geometry>
+		<origin rpy="0 0 0" xyz="2.557086257603153e-07 -1.8857761320510345e-07 -0.995153272419358" /></collision>
+		<inertial>
+			<mass value="0.10" />
+			<inertia ixx="0.10" ixy="0.0" ixz="0.0" iyy="0.10" iyz="0.0" izz="0.10" />
+		</inertial>
+	</link>
+</robot>

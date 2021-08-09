@@ -1,6 +1,11 @@
 import json
 from typing import List, Dict, Union
-from somo.utils import spaced_str, make_inertia_dict, dict_from_file
+from somo.utils import (
+    spaced_str,
+    make_inertia_dict,
+    create_scaled_shape_dimension_dict,
+    dict_from_file,
+)
 
 
 class SMLinkDefinition:
@@ -29,6 +34,7 @@ class SMLinkDefinition:
         material_color: [Union[float, int]],
         material_name: str,
         origin_offset: [Union[float, int]] = None,
+        visual_geometry_scaling_factor=1.0,
     ):
         """
         Args:
@@ -39,6 +45,8 @@ class SMLinkDefinition:
             material_color:     xx
                                   xxxxxxx more .
             material_name:      xx.
+                visual_geometry_scaling_factor scales the visual geometry relative to the contact geometry
+
         """
 
         # assert that all arguments are of the right type. may not be necessary to do this, but won't hurt...
@@ -72,39 +80,25 @@ class SMLinkDefinition:
         else:
             origin_offset = [0, 0, 0, 0, 0, 0]
 
-        # assert that the specified shape and dimensions match and create shape_dimensions_dict & height attribute
-        if shape_type == "box" or shape_type == "stadium":
-            assert (
-                len(dimensions) == 3
-            ), f"dimension must have length 3 for link_type {shape_type}"
-            shape_dimensions_dict = {"size": spaced_str(dimensions)}
-            height = dimensions[2]
-        elif shape_type in ["cylinder", "capsule"]:
-            assert (
-                len(dimensions) == 2
-            ), f"dimension must have length 2 for link_type {shape_type}"
-            shape_dimensions_dict = {
-                "length": str(dimensions[0]),
-                "radius": str(dimensions[1]),
-            }
-            height = dimensions[0]
-        elif shape_type == "sphere":
-            assert (
-                len(dimensions) == 1
-            ), f"dimension must have length 1 for link_type {shape_type}"
-            shape_dimensions_dict = {"radius": str(dimensions[0])}
-            height = 2 * dimensions[0]
-        else:
-            assert False, f"link shape {shape_type} is not defined"
+        _, contact_shape_dimensions_dict, height = create_scaled_shape_dimension_dict(
+            shape_type, dimensions
+        )
+        _, visual_shape_dimensions_dict, _ = create_scaled_shape_dimension_dict(
+            shape_type, dimensions, height_scaling_factor=visual_geometry_scaling_factor
+        )
 
         if origin_offset is None:
             origin_offset = [0, 0, 0, 0, 0, 0]
 
         self.shape_type = shape_type
         self.dimensions = dimensions
-        self.shape_dimensions_dict = shape_dimensions_dict
+        self.contact_shape_dimensions_dict = contact_shape_dimensions_dict
+        self.visual_shape_dimensions_dict = visual_shape_dimensions_dict
         self.height = height
-
+        self.visual_geometry_scaling_factor = visual_geometry_scaling_factor
+        assert (
+            visual_geometry_scaling_factor == 1 or visual_geometry_scaling_factor == 1.0
+        ), "fpr now, visual_geometry_scaling_factor has to be 1.0"
         self.mass = mass
         self.inertial_values = inertial_values
         self.inertial_value_dict = make_inertia_dict(inertial_values)
@@ -117,7 +111,8 @@ class SMLinkDefinition:
         required_attributes = [
             "shape_type",
             "dimensions",
-            "shape_dimensions_dict",
+            "contact_shape_dimensions_dict",
+            "visual_shape_dimensions_dict",
             "mass",
             "inertial_values",
             "inertial_value_dict",
@@ -129,29 +124,20 @@ class SMLinkDefinition:
         for a in required_attributes:
             assert hasattr(self, a), f"attribute {a} is missing"
 
-    def reduce_height(self, height_fraction):
+    def reduce_height(self, height_scaling_factor):
 
-        if self.shape_type == "box" or self.shape_type == "stadium":
-            self.dimensions = [
-                self.dimensions[0],
-                self.dimensions[1],
-                self.dimensions[2] * height_fraction,
-            ]
-            self.shape_dimensions_dict = {"size": spaced_str(self.dimensions)}
-            self.height = self.dimensions[2]
-        elif self.shape_type in ["cylinder", "capsule"]:
-            self.dimensions = [self.dimensions[0] * height_fraction, self.dimensions[1]]
-            self.shape_dimensions_dict = {
-                "length": str(self.dimensions[0]),
-                "radius": str(self.dimensions[1]),
-            }
-            self.height = self.dimensions[0]
-        elif self.shape_type == "sphere":
-            self.dimensions = [self.dimensions[0] * height_fraction]
-            self.shape_dimensions_dict = {"radius": str(self.dimensions[0])}
-            self.height = 2 * self.dimensions[2]
-        else:
-            assert False, f"link reduction is not defined for shape {self.shape_type}"
+        (
+            self.dimensions,
+            self.contact_shape_dimensions_dict,
+            self.height,
+        ) = create_scaled_shape_dimension_dict(
+            self.shape_type,
+            self.dimensions,
+            height_scaling_factor=height_scaling_factor,
+        )
+        self.visual_shape_dimensions_dict = (
+            self.contact_shape_dimensions_dict
+        )  # todo: change this - this should technically be adjusted for the overall relative sccaling between visual and contact geometries
 
     @staticmethod
     def assert_required_fields(dict_definition: dict):

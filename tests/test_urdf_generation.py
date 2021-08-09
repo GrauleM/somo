@@ -3,6 +3,7 @@ import pybullet_data
 import numpy as np
 import os
 import sys
+import pytest
 
 path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.insert(0, path)
@@ -15,21 +16,34 @@ from somo.sm_joint_definition import SMJointDefinition
 from somo.sm_continuum_manipulator import SMContinuumManipulator
 from somo.create_manipulator_urdf import create_manipulator_urdf
 
+from pathlib import Path
 
-def urdf_generation_tester(manipulator_definition, visualize=False):
+TEST_UDRF_PATH = os.path.join(Path(__file__).parent, "test.urdf")
+
+standard_link_defitinion_dict = {
+    "shape_type": "box",
+    "dimensions": [0.1, 0.1, 0.15],
+    "mass": 0.350,
+    "inertial_values": [1, 0, 0, 1, 0, 1],
+    "material_color": [0.3, 1, 0.1, 1.0],
+    "material_name": "green",
+}
+
+
+def manipulator_simulation(manipulator_definition, gui=False):
     """
-    tests whether the urdf for manipulator_definition can be generated and loaded into pybullet
+    loads and simulates a manipulator_definition in pybullet
     """
 
     # create the urdf
     test_urdf = create_manipulator_urdf(manipulator_definition)
 
     # prepare everything for the physics client
-    if visualize:
+    if gui:
         physicsClient = p.connect(
             p.GUI
         )  # p.GUI for graphical, or p.DIRECT for non-graphical version
-        n_steps = 150000
+        n_steps = 50000
 
     else:
         physicsClient = p.connect(p.DIRECT)
@@ -42,14 +56,13 @@ def urdf_generation_tester(manipulator_definition, visualize=False):
     p.setPhysicsEngineParameter(
         enableFileCaching=0
     )  # xx todo: check if this makes things faster
-    time_step = 0.001
+    time_step = 0.0001
     p.setTimeStep(time_step)
 
     # load the ground plane into pybullet simulator
     p.setAdditionalSearchPath(
         pybullet_data.getDataPath()
     )  # defines the path used by p.loadURDF
-    planeId = p.loadURDF("plane.urdf")
 
     # load the test urdf into pybullet
     bodyUniqueId = p.loadURDF(test_urdf, physicsClientId=physicsClient, useFixedBase=1)
@@ -63,6 +76,33 @@ def urdf_generation_tester(manipulator_definition, visualize=False):
 
         p.stepSimulation()
     p.disconnect(physicsClient)
+
+    # delete the test urdf
+    os.remove(test_urdf)
+
+
+def link_definition_from_shape(shape: str = None):
+    """
+    creates a link definition dict with the specified shape
+    """
+    if shape is None or shape == "box":
+        shape = "box"
+
+    if shape in ["box", "stadium"]:
+        dimension = [0.15, 0.15, 0.05]
+    elif shape in ["cylinder", "capsule"]:
+        dimension = [0.05, 0.15]
+
+    link_definition_dict = {
+        "shape_type": shape,
+        "dimensions": dimension,
+        "mass": 0.350,
+        "inertial_values": [1, 0, 0, 1, 0, 1],
+        "material_color": [0.3, 0.1, 1.0, 1.0],
+        "material_name": "blue",
+    }
+
+    return link_definition_dict
 
 
 def manipulators_from_links(link_definition_dict_1, link_definition_dict_2):
@@ -132,7 +172,7 @@ def manipulators_from_links(link_definition_dict_1, link_definition_dict_2):
             actuator_definitions=[actuator_definition_dict1, actuator_definition_dict2],
             tip_definition=None,
             manipulator_name="test1",
-            urdf_filename="test.urdf",
+            urdf_filename=TEST_UDRF_PATH,
         ),
         SMManipulatorDefinition(
             n_act=2,
@@ -140,153 +180,36 @@ def manipulators_from_links(link_definition_dict_1, link_definition_dict_2):
             actuator_definitions=[actuator_definition_dict1, actuator_definition_dict2],
             tip_definition=tip_definition_dict_sphere,
             manipulator_name="test2",
-            urdf_filename="test.urdf",
+            urdf_filename=TEST_UDRF_PATH,
         ),
     ]
 
     return manipulator_definitions
 
 
-def test_urdf_generation_box(visualize=False):
-    link_definition_dict_1 = {
-        "shape_type": "box",
-        "dimensions": [0.15, 0.15, 0.05],
-        "mass": 0.350,
-        "inertial_values": [1, 0, 0, 1, 0, 1],
-        "material_color": [0.3, 0.1, 1.0, 1.0],
-        "material_name": "blue",
-    }
-
-    link_definition_dict_2 = {
-        "shape_type": "box",
-        "dimensions": [0.1, 0.1, 0.15],
-        "mass": 0.350,
-        "inertial_values": [1, 0, 0, 1, 0, 1],
-        "material_color": [0.3, 1, 0.1, 1.0],
-        "material_name": "green",
-    }
-
+def urdf_generation_tester(shape: str, gui: bool):
     manipulator_definitions = manipulators_from_links(
-        link_definition_dict_1, link_definition_dict_2
+        link_definition_from_shape(shape=shape), standard_link_defitinion_dict
     )
 
-    try:
-        for manipulator_definition in manipulator_definitions:
-            urdf_generation_tester(manipulator_definition, visualize)
-        return True
+    for manipulator_definition in manipulator_definitions:
+        manipulator_simulation(manipulator_definition, gui)
 
-    except:
-        return False
+    return True
 
 
-# xx todo: rewrite tests more elegantly (less code repetition)
-def test_urdf_generation_cylinder(visualize=False):
-    link_definition_dict_1 = {
-        "shape_type": "cylinder",
-        "dimensions": [0.05, 0.15],
-        "mass": 0.350,
-        "inertial_values": [1, 0, 0, 1, 0, 1],
-        "material_color": [0.3, 0.1, 1.0, 1.0],
-        "material_name": "blue",
-    }
-
-    link_definition_dict_2 = {
-        "shape_type": "box",
-        "dimensions": [0.1, 0.1, 0.15],
-        "mass": 0.350,
-        "inertial_values": [1, 0, 0, 1, 0, 1],
-        "material_color": [0.3, 1, 0.1, 1.0],
-        "material_name": "green",
-    }
-
-    manipulator_definitions = manipulators_from_links(
-        link_definition_dict_1, link_definition_dict_2
-    )
-
-    try:
-        for manipulator_definition in manipulator_definitions:
-            urdf_generation_tester(manipulator_definition, visualize)
-        return True
-
-    except:
-        return False
+def test_urdf_generation():
+    gui = False
+    for shape in ["box", "cylinder", "stadium", "capsule"]:
+        assert urdf_generation_tester(
+            shape=shape, gui=gui
+        ), f"Couldn't instantiate manipulator for link shape '{shape}'"
 
 
-def test_urdf_generation_stadium(visualize=False):
-    link_definition_dict_1 = {
-        "shape_type": "box",
-        "dimensions": [0.15, 0.15, 0.05],
-        "mass": 0.350,
-        "inertial_values": [1, 0, 0, 1, 0, 1],
-        "material_color": [0.3, 0.1, 1.0, 1.0],
-        "material_name": "blue",
-    }
-
-    link_definition_dict_2 = {
-        "shape_type": "stadium",
-        "dimensions": [0.1, 0.1, 0.15],
-        "mass": 0.350,
-        "inertial_values": [1, 0, 0, 1, 0, 1],
-        "material_color": [0.3, 1, 0.1, 1.0],
-        "material_name": "green",
-    }
-
-    manipulator_definitions = manipulators_from_links(
-        link_definition_dict_1, link_definition_dict_2
-    )
-
-    try:
-        for manipulator_definition in manipulator_definitions:
-            urdf_generation_tester(manipulator_definition, visualize)
-        return True
-
-    except:
-        return False
-
-
-def test_urdf_generation_capsule(visualize=False):
-    link_definition_dict_1 = {
-        "shape_type": "box",
-        "dimensions": [0.15, 0.15, 0.05],
-        "mass": 0.350,
-        "inertial_values": [1, 0, 0, 1, 0, 1],
-        "material_color": [0.3, 0.1, 1.0, 1.0],
-        "material_name": "blue",
-    }
-
-    link_definition_dict_2 = {
-        "shape_type": "capsule",
-        "dimensions": [0.15, 0.05],
-        "mass": 0.350,
-        "inertial_values": [1, 0, 0, 1, 0, 1],
-        "material_color": [0.3, 1, 0.1, 1.0],
-        "material_name": "green",
-    }
-
-    manipulator_definitions = manipulators_from_links(
-        link_definition_dict_1, link_definition_dict_2
-    )
-
-    try:
-        for manipulator_definition in manipulator_definitions:
-            urdf_generation_tester(manipulator_definition, visualize)
-        return True
-
-    except:
-        return False
-
-
-if __name__ == "__main__":
-    # xx todo: add arg parser for the visualization flag with default False
-    assert test_urdf_generation_box(
-        visualize=False
-    ), "manipulators with box links could not be created/loaded"
-    assert test_urdf_generation_cylinder(
-        visualize=False
-    ), "manipulators with cylinder links could not be created/loaded"
-    assert test_urdf_generation_stadium(
-        visualize=True
-    ), "manipulators with stadium links could not be created/loaded"
-    assert test_urdf_generation_capsule(
-        visualize=False
-    ), "manipulators with capsule links could not be created/loaded"
+@pytest.mark.gui  # annotate it as a "gui" test
+def test_urdf_generation_gui():
+    gui = True
+    for shape in ["box", "cylinder", "stadium", "capsule"]:
+        assert urdf_generation_tester(
+            shape=shape, gui=gui
+        ), f"Couldn't instantiate manipulator for link shape '{shape}'"

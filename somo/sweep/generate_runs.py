@@ -13,24 +13,12 @@ from somo.sweep import iter_utils
 
 
 class RunGenerator:
-    """
-    Prepare a group of simulations to run
-    """
     def __init__(self):
         save_paths = iter_utils.load_yaml("save_paths.yaml")
         self.base_folder = save_paths.get("save_path", "data")
 
     def from_file(self, config_file, todo_filename="runs_todo.yaml"):
-        """
-        Generate a set of runs from a config file
-
-        Parameters
-        ----------
-        config_file : str
-            The configuration file to use when generating sweep permutations
-        todo_filename : str
-            The filename to store the list of simulations to run
-        """
+        """Generate a set of runs from a config file"""
 
         # Read in the configuration and get relavant parameters
         self.config = iter_utils.load_yaml(config_file)
@@ -47,26 +35,7 @@ class RunGenerator:
             self.make_simple(self.config)
 
     def generate_params(self, config):
-        """
-        Generate all permutations of a given set of sweep parameters
-
-        Parameters
-        ----------
-        config_file : str
-            The configuration file to use when generating sweep permutations
-        todo_filename : str
-            The filename to store the list of simulations to run
-
-        Returns
-        -------
-        param_list : list
-            The list of all permutations of parameters
-        name_list : list
-            A list of dimension names
-        permute_list : list
-            A list of all unique values for each dimension of the sweep
-
-        """
+        """Generate all permutations of a given set of sweep parameters"""
 
         # Generate filename
         folder = iter_utils.get_group_folder(config)
@@ -113,22 +82,7 @@ class RunGenerator:
         return param_list, name_list, permute_list
 
     def make_simple(self, config, save_todo=True):
-        """
-        Make a set of runs using all permutations of sweep parameters
-
-        Parameters
-        ----------
-        config : dict
-            A configuration (dictionary of parameters) to use
-        save_todo : bool
-            Choose whether to save a todo file
-
-        Returns
-        -------
-        run_names : list
-            A list of parameter file locations for all runs in the group
-
-        """
+        """Make a simple set of runs using all permutations of sweep parameters"""
 
         # Save a copy of the sweep config in the root folder
         # config['save']['folder'] = self.base_folder
@@ -165,19 +119,7 @@ class RunGenerator:
         return run_names
 
     def make_2d_slices(self, config):
-        """
-        Make several 2D sets of runs rather than one large multimimensional set
-
-        Parameters
-        ----------
-        config : dict
-            A configuration (dictionary of parameters) to use
-
-        Warning
-        ----
-        This method of generating sweeps leads to complications later when agregating data. Avoid this if possible.
-
-        """
+        """Make a simple set of runs using all permutations of sweep parameters"""
 
         # Get the sweep settings
         sweep = config["sweep"]

@@ -1,0 +1,22 @@
+<robot name="hoop">
+	<link name="_name">
+		<visual>
+			<origin rpy="0 0 0" xyz="-0.57856178 0.0 1.41190734" />
+			<geometry>
+				<mesh filename="hoop/basketball_net_and_board.obj" scale="0.02 0.02 0.02" />
+			</geometry>
+			<material name="texture">
+				<color rgba="1.0 1.0 1.0 1.0" />
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+				<mesh filename="hoop/basketball_net_and_board_vhacd.obj" scale="0.02 0.02 0.02" />
+			</geometry>
+		<origin rpy="0 0 0" xyz="-0.57856178 0.0 1.41190734" /></collision>
+		<inertial>
+			<mass value="1.0" />
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+		</inertial>
+	</link>
+</robot>

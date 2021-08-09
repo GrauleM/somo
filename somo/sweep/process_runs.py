@@ -349,15 +349,6 @@ def flatten_data(results):
 
 
 class DataLabeler:
-    """
-    Compute labels and performance metrics for an entire run of data and generate a data summary based on these labels.
-
-    Parameters
-    ----------
-    label_functions : function
-        The python module where label functions are stored (a file with a set of functions inside)
-
-    """
     def __init__(self, label_functions):
         self.label_functions_pkg = label_functions
         all_filenames = iter_utils.load_yaml("save_paths.yaml")
@@ -365,39 +356,10 @@ class DataLabeler:
         self.global_scale = None
 
     def set_global_scale(self, scale):
-        """
-        Set the global scale to use when parsing data
-
-        Parameters
-        ----------
-        scale : float
-            The global scale value to use
-        """
         self.global_scale = float(scale)
 
     def process_all(self, config_file, label_function=None, **kwargs):
-        """
-        Process all datasets within a config file
-
-        Parameters
-        ----------
-        config_file : str
-            The configuration file used to generate the sweep
-        label_function: list
-            List of label functions to use
-
-
-        Keyword Args
-        ------
-        parallel : bool
-            Choose whether to use parallel processing
-        num_processes : int
-            The number of parallel processes to use
-        plot_raw : bool
-            Choose whether to plot raw data (*Note: This will substantially increase compute times*)
-        cycle_key : str
-            The name of the "cycle data channel" to use.
-        """
+        """Process all datasets within a config file"""
 
         kwargs["global_scale"] = copy.deepcopy(self.global_scale)
         kwargs["label_functions_pkg"] = self.label_functions_pkg

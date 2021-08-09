@@ -1,0 +1,43 @@
+## Linter GitHub Actions ##
+name: Lint Code Base
+
+#
+# Documentation:
+# https://help.github.com/en/articles/workflow-syntax-for-github-actions
+# reference: https://github.com/github/super-linter
+
+# Start the job on all pushes to main and on PR with main (not on other pushes to save action compute minutes) #
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: [main]
+
+# Set the Job #
+jobs:
+  build:
+    # Name the Job
+    name: Lint Code Base
+    # Set the agent to run on
+    runs-on: ubuntu-18.04
+
+    # Load all steps #
+    steps:
+      # Checkout the code base #
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          # Full git history is needed to get a proper list of changed files within `super-linter`
+          fetch-depth: 00
+
+      # Install linter #
+      - name: Install black
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install black==20.8b1
+
+      # Run linter #
+      - name: Lint Code Base
+        run: |
+          python3 -m black --check .

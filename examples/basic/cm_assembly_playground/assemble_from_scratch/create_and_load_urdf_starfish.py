@@ -20,11 +20,11 @@ manipulator_definition = SMManipulatorDefinition.from_file("finger_def_starfish.
 # offset_2= [1, 1, 0, np.pi/4, 0, np.pi]
 # offset_3= [0, 1, 0, np.pi/4, 0, np.pi]
 
-manipulator_definition_pairs=[]
+manipulator_definition_pairs = []
 for i in range(5):
-    angle=2*np.pi/5*i
-    offset = [np.cos(angle), np.sin(angle), 0 , 0, np.pi/2, angle]
-    manipulator_definition_pairs.append((manipulator_definition,offset))
+    angle = 2 * np.pi / 5 * i
+    offset = [np.cos(angle), np.sin(angle), 0, 0, np.pi / 2, angle]
+    manipulator_definition_pairs.append((manipulator_definition, offset))
 # offset_0= [0, 0, 0, np.pi/3, 0, 0]
 # offset_1= [0, 0, 0, 0, 0, 0]
 # offset_2= [0, 0, 0, np.pi/3, 0, np.pi/3]
@@ -39,22 +39,26 @@ for i in range(5):
 
 base_link1 = SMLinkDefinition(
     shape_type="cylinder",
-    dimensions=[.5,1.1],
-    mass=1.,
-    material_color=[.7,.2,.2,1],
-    inertial_values=[1,0,0,1,0,1],
-    material_name='base_color',
-    origin_offset=[.0,0.0,0.25,0,0,0])
+    dimensions=[0.5, 1.1],
+    mass=1.0,
+    material_color=[0.7, 0.2, 0.2, 1],
+    inertial_values=[1, 0, 0, 1, 0, 1],
+    material_name="base_color",
+    origin_offset=[0.0, 0.0, 0.25, 0, 0, 0],
+)
 
 
-test_urdf = create_cmassembly_urdf(base_links=[base_link1], manipulator_definition_pairs=manipulator_definition_pairs,
-                                   assembly_name="starfish_test")
+test_urdf = create_cmassembly_urdf(
+    base_links=[base_link1],
+    manipulator_definition_pairs=manipulator_definition_pairs,
+    assembly_name="starfish_test",
+)
 
 
 # prepare everything for the physics client
 physicsClient = p.connect(
-        p.GUI
-    )  # p.GUI for graphical, or p.DIRECT for non-graphical version
+    p.GUI
+)  # p.GUI for graphical, or p.DIRECT for non-graphical version
 n_steps = 1500000
 
 p.setGravity(0, 0, -10)

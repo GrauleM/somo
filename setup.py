@@ -5,10 +5,7 @@ from setuptools import setup
 
 setup(
     name="somo",
-    version=open("somo/_version.py")
-    .readlines()[-1]
-    .split()[-1]
-    .strip("\"'"),
+    version=open("somo/_version.py").readlines()[-1].split()[-1].strip("\"'"),
     description="A light framework for the simulation of continuum manipulators",
     long_description="",
     url="git@github.com:GrauleM/somo",

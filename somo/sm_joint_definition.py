@@ -98,10 +98,7 @@ class SMJointDefinition:
                     int(element) == 0
                 ), f"neutral axis offset currently only implemented for positional offsets"
 
-            if (
-                int(sum(i[0] * i[1] for i in zip(neutral_axis_offset[:3], axis)))
-                is not 0
-            ):
+            if int(sum(i[0] * i[1] for i in zip(neutral_axis_offset[:3], axis))) != 0:
                 print(
                     f"Warning: neutral_axis_offset xyz ({neutral_axis_offset[:3]}) is not perpendicular to axis ({axis}). is this intentional?"
                 )

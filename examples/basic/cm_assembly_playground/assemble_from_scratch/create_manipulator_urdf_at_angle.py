@@ -14,7 +14,8 @@ import pdb
 
 # TODO: URGENT: error in stadium geometry when using cylinders with uneven dimensions
 
-growth_axis=(np.pi/2,0,0)
+growth_axis = (np.pi / 2, 0, 0)
+
 
 def add_joint(
     robot_root,
@@ -157,7 +158,7 @@ def create_manipulator_urdf(
         ], f"spherical actuator base not yet supported"
         base_height = manipulator_definition.base_definition.height
 
-        base_origin = [0, 0, base_height / 2, 0, 0, 0] # xx todo: this is the original
+        base_origin = [0, 0, base_height / 2, 0, 0, 0]  # xx todo: this is the original
         # base_origin = [0, 0, base_height / 2, np.pi/2, 0, 0] # xx todo: changed this
 
         add_link(
