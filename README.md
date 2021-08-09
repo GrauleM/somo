@@ -3,7 +3,7 @@
 
 > This module contains a light wrapper around pybullet that facilitates the simulation of continuum manipulators.
 
-> The following is a pre-release. We are actively working on cleaning up this code and providing a thorough documentation. 
+> The following is a pre-release. We are actively working on cleaning up this code and providing a thorough documentation. Warning: some of the older examples won't work on this branch. use the legacy branch for older examples. Working examples are: basketball demo 
 
 
 SoMo (**So**ft**Mo**tion) is a framework to facilitate the simulation of continuum manipulator (CM) motion in 
