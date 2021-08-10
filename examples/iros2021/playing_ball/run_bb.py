@@ -7,8 +7,8 @@ import os
 import sys
 
 path = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), "..", "..")
-)  # this is a bit hacky still, work in progress...
+    os.path.join(os.path.dirname(__file__), "..", "..", "..")
+)  # this is a bit hacky... just in case the user doesnt have somo installed...
 sys.path.insert(0, path)
 
 from somo.sm_manipulator_definition import SMManipulatorDefinition
