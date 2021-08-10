@@ -65,7 +65,7 @@ n_steps = 60000
 planeId = p.loadURDF(
     "additional_urdfs/plane/plane.urdf", flags=p.URDF_USE_MATERIAL_COLORS_FROM_MTL
 )
-p.changeDynamics(planeId, -1, lateralFriction=2)  # set ground plane friction
+p.changeDynamics(planeId, -1, lateralFriction=1)  # set ground plane friction
 
 # load the bball hoop
 hoopStartPos = [-3.6, 0, 1]
@@ -80,16 +80,16 @@ hoopId = p.loadURDF(
 )
 
 # load the bball
-ballStartPos = [4, 0.75, 0.6]
+ballStartPos = [3.5, 0.75, 0.5]
 ballStartOr = p.getQuaternionFromEuler([0, 0, 0])
 ballId = p.loadURDF(
     "additional_urdfs/bball_court/ball.urdf",
     ballStartPos,
     ballStartOr,
     flags=p.URDF_USE_MATERIAL_COLORS_FROM_MTL,
-    globalScaling=0.6,
+    globalScaling=0.5,
 )
-p.changeDynamics(ballId, -1, lateralFriction=2)  # set ball friction
+p.changeDynamics(ballId, -1, lateralFriction=1)  # set ball friction
 
 ### Create and load the manipulator / arm
 # load the manipulator definition

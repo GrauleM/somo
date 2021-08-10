@@ -8,17 +8,18 @@ config:
     interp_type: linear   # Types include: 'linear', 'cubic', 'none'
     subsample_num: 90 #Total number of subsamples
     setpoints:
-        # [time, act0_ax0, act0_ax1, act1_ax0, act1_ax1, act2_ax0, ... ]
+        # [time, act0_ax0, act0_ax1, act1_ax0, act1_ax1, act2_ax0, ... ]   # act0 is closest to the base
         main:
             - [1.0,     0,  0, 0,  0,  0, 0, 0, 0,  0,  0 ] # start at steady state
             - [2.0,  0,  60, 0, 60, 0, 0, 0, 0,  0,  0 ] # lay down the arm
-            - [10.0,  0,  600, 0, 600, 0, 0, 0, 0,  0,  0 ] # move the grasping region of the arm closer to the base / to the ball
-            - [20.0,  0,  600, 0, 600, 0, 0,  -600, 0,  -600,  0 ] # grasp
-            - [30.0,  0,  600, 0, 600, 210, 0,  -600, 0,  -600,  0 ] # initiate moving the arm
-            - [35.0,  0,  -150, 0, -150, 210, 0,  -600, 0,  -600,  0 ] # move the arm up a bit
-            - [ 45.0,  0,  -300, 0, -300, 210, 0,  -600, 0,  -600,  0 ] # move the arm over to the other side
-            - [ 50.0,  0,  -300, 0, -300, 210, 0,  -100, 0,  -100,  0 ] # release the grasp
-            - [ 55.0,  0,  -0, 0, -0, 210, 0,  -100, 0,  -100,  0 ]
+            - [10.0,  0,  600, 0, 600, 0, -100, 0, 0,  0,  0 ] # move the grasping region of the arm closer to the base / to the ball
+            - [20.0,  0,  600, 0, 600, 0, -100,  -300, 0,  -400,  0 ] # grasp
+            - [25.0,  0,  600, 0, 600, 0, -100,  -600, 0,  -600,  0 ] # grasp
+            - [30.0,  0,  600, 0, 600, 210, -100,  -600, 0,  -600,  0 ] # initiate moving the arm
+            - [35.0,  0,  -150, 0, -150, 210, -100,  -600, 0,  -600,  0 ] # move the arm up a bit
+            - [ 45.0,  0,  -300, 0, -300, 210, -100,  -600, 0,  -600,  0 ] # move the arm over to the other side
+            - [ 50.0,  0,  -300, 0, -300, 210, -100,  -100, 0,  -100,  0 ] # release the grasp
+            - [ 55.0,  0,  -0, 0, -0, 210, -110,  -100, 0,  -100,  0 ]
 
         prefix:
             - [0.0,   0, 0, 0,  0, 0, 0, 0, 0,  0,  0]
