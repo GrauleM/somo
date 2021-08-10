@@ -58,7 +58,7 @@ p.setRealTimeSimulation(
 ## Specify time steps
 time_step = 0.001
 p.setTimeStep(time_step)
-n_steps = 50000
+n_steps = 60000
 
 ### load all the objects into the environment
 # load the ground plane
@@ -68,7 +68,7 @@ planeId = p.loadURDF(
 p.changeDynamics(planeId, -1, lateralFriction=2)  # set ground plane friction
 
 # load the bball hoop
-hoopStartPos = [-4, -0, 1]
+hoopStartPos = [-3.6, 0, 1]
 hoopStartOr = p.getQuaternionFromEuler([0, 0, 0])
 hoopId = p.loadURDF(
     "additional_urdfs/bball_court/hoop.urdf",
@@ -80,7 +80,7 @@ hoopId = p.loadURDF(
 )
 
 # load the bball
-ballStartPos = [4, 0.75, 0.75]
+ballStartPos = [4, 0.75, 0.6]
 ballStartOr = p.getQuaternionFromEuler([0, 0, 0])
 ballId = p.loadURDF(
     "additional_urdfs/bball_court/ball.urdf",
