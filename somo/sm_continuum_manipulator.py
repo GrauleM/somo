@@ -141,7 +141,7 @@ class SMContinuumManipulator:
         elif baseConstraint == "constrained":
             print(
                 "you provided a constrained base, but not a static base. if you do not anticipate moving the manipulator by modifying it's base constraint within the simulation loop, "
-                "it is highly recommended to use a static base instead."
+                "it is highly recommended to use a static base instead for improved numerical stability."
             )
             static_base = 0
             constrained_base = 1
