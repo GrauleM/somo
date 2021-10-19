@@ -534,5 +534,6 @@ class SMContinuumManipulator:
             link_pos = linkState[0]
             link_vel = linkState[6]
             positions.append(link_pos)
-        return velocities
+            velocities.append(link_vel)
+        return positions,velocities
 
