@@ -515,7 +515,7 @@ class SMContinuumManipulator:
         return angles
 
     def get_backbone_curvatures(self):
-        print("WARNING: offset by a constant factor")
+        print("WARNING: offset by a constant factor") # todo: fix this
         curvatures = []
         for ind in self.flexible_joint_indices:
             jointState = p.getJointState(self.bodyUniqueId, ind)
@@ -524,3 +524,15 @@ class SMContinuumManipulator:
             curvature = np.cos(angle / 2) / (segment_length / 2)
             curvatures.append(curvature)
         return curvatures
+
+    # lists all link positions; todo: make sure this does not return the positions of helper shapes
+    def get_backbone_link_positions_and_velocities(self):
+        positions = []
+        velocities = []
+        for ind in range(len(self.linkId_to_arcLength)):
+            linkState = p.getLinkState(bodyUniqueId=self.bodyUniqueId, linkIndex=ind,computeLinkVelocity=1)
+            link_pos = linkState[0]
+            link_vel = linkState[6]
+            positions.append(link_pos)
+        return velocities
+
