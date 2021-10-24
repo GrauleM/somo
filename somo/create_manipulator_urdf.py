@@ -135,10 +135,10 @@ def add_empty_link(robot_root, link_name):
     """
     link = ET.SubElement(robot_root, "link", {"name": link_name})
 
-    mass = 0.
-    inertial_values = [0,0,0,0,0,0]
+    mass = 0.0
+    inertial_values = [0, 0, 0, 0, 0, 0]
     mass_dict = {"value": str(mass)}
-    inertial_value_dict= make_inertia_dict(inertial_values)
+    inertial_value_dict = make_inertia_dict(inertial_values)
     inertial = ET.SubElement(link, "inertial")
     inner_mass = ET.SubElement(inertial, "mass", mass_dict)
     inner_in = ET.SubElement(inertial, "inertia", inertial_value_dict)
