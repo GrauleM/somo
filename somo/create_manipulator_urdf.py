@@ -5,7 +5,7 @@ from somo.sm_joint_definition import SMJointDefinition
 from somo.sm_actuator_definition import SMActuatorDefinition
 from somo.sm_manipulator_definition import SMManipulatorDefinition
 
-from somo.utils import spaced_str, clean_xml_indentation
+from somo.utils import spaced_str, clean_xml_indentation, make_inertia_dict
 
 import numpy as np
 
@@ -134,6 +134,15 @@ def add_empty_link(robot_root, link_name):
     https://answers.ros.org/question/289031/what-is-the-correct-way-to-introduce-a-dummy-link-in-urdf/
     """
     link = ET.SubElement(robot_root, "link", {"name": link_name})
+
+    mass = 0.
+    inertial_values = [0,0,0,0,0,0]
+    mass_dict = {"value": str(mass)}
+    inertial_value_dict= make_inertia_dict(inertial_values)
+    inertial = ET.SubElement(link, "inertial")
+    inner_mass = ET.SubElement(inertial, "mass", mass_dict)
+    inner_in = ET.SubElement(inertial, "inertia", inertial_value_dict)
+
     return link
 
 
@@ -170,15 +179,15 @@ def create_manipulator_urdf(
 
     else:  # add an empty base_link if no base info was provided (this is considered good urdf practice)
 
-        # add_empty_link(robot_root=robot, link_name=base_link_name)
+        add_empty_link(robot_root=robot, link_name=base_link_name)
 
         base_link = copy.copy(
             manipulator_definition.actuator_definitions[0].link_definition
         )
-        base_link.height = 0.0
-        base_link.dimensions = [x / 1000 for x in base_link.dimensions]
-        base_link.mass = 0.0
-        base_link.inertial_values = [x / 1000 for x in base_link.inertial_values]
+        # base_link.height = 0.0
+        # base_link.dimensions = [x / 1000 for x in base_link.dimensions]
+        # base_link.mass = 0.0
+        # base_link.inertial_values = [x / 1000 for x in base_link.inertial_values]
 
     previous_link = base_link
     # previous_link.height = 2*previous_link.height
