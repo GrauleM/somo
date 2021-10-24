@@ -170,7 +170,7 @@ def create_manipulator_urdf(
 
     else:  # add an empty base_link if no base info was provided (this is considered good urdf practice)
 
-        add_empty_link(robot_root=robot, link_name=base_link_name)
+        # add_empty_link(robot_root=robot, link_name=base_link_name)
 
         base_link = copy.copy(
             manipulator_definition.actuator_definitions[0].link_definition
