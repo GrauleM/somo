@@ -45,8 +45,8 @@ class SMActuatorDefinition:
             ), f"currently, quasi-planar actuators only support a single entry in joint_definitions - this joint_definition defines identical joints along the actuator"
         elif not planar_flag:
             assert (
-                len(joint_definitions) == 2
-            ), f"exactly two joint_definitions are required for non-planar actuators (one for each axis)"
+                len(joint_definitions) == 2 or len(joint_definitions) == 3
+            ), f"exactly two or three joint_definitions are required for non-planar actuators (one for each bending axis and optionally one more for torsion)"
 
         assert n_segments > 0.0, f"n_segments has to be larger than 0"
 

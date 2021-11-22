@@ -43,6 +43,14 @@ actuator_definitions:
         joint_neutral_position:    0
         joint_control_limit_force: 0.4
 
+      # Define joint type 3 (for torsion)
+      - joint_type: "revolute"
+        axis: [ 0,1,0 ]
+        limits: [ -3.141592, 3.141592, 100, 3 ]
+        spring_stiffness: 414.857 #332  #721.24 #94000
+        joint_neutral_position: 0
+        joint_control_limit_force: 0.4
+
 # Define the base link
 base_definition:
   shape_type:      "box"

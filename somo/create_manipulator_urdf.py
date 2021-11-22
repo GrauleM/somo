@@ -199,6 +199,8 @@ def create_manipulator_urdf(
             actuator_definition.n_segments + 1
         ):  # xx todo: enable varying cross-sections/properties - link_description could be a generator here
 
+            n_joint_types = len(actuator_definition.joint_definitions) # todo: add a test for torsion joints
+
             if (
                 total_segment_counter == 0
             ):  # if the first joint connects to base, make it a fixed segment
@@ -208,13 +210,19 @@ def create_manipulator_urdf(
 
             else:
 
-                if actuator_definition.planar_flag or segment_nr % 2:
+                # import pdb; pdb.set_trace()
+                if actuator_definition.planar_flag or segment_nr % n_joint_types:
                     ax_str = "_ax0"
                     joint_to_add = copy.copy(actuator_definition.joint_definitions[0])
 
+                # else segment_nr % n_joint_types == 0:
                 else:
                     ax_str = "_ax1"
                     joint_to_add = copy.copy(actuator_definition.joint_definitions[1])
+
+                # elif (segment_nr-1) % n_joint_types == 2:
+                #     ax_str = "_ax2"
+                #     joint_to_add = copy.copy(actuator_definition.joint_definitions[2])
 
             # finalize all the naming
             segment_name = "act" + str(actuator_nr) + "Seg" + str(segment_nr)
