@@ -199,7 +199,9 @@ def create_manipulator_urdf(
             actuator_definition.n_segments + 1
         ):  # xx todo: enable varying cross-sections/properties - link_description could be a generator here
 
-            n_joint_types = len(actuator_definition.joint_definitions) # todo: add a test for torsion joints
+            n_joint_types = len(
+                actuator_definition.joint_definitions
+            )  # todo: add a test for torsion joints
 
             if (
                 total_segment_counter == 0
@@ -211,15 +213,18 @@ def create_manipulator_urdf(
             else:
 
                 # import pdb; pdb.set_trace()
-                if actuator_definition.planar_flag or (segment_nr-1) % n_joint_types==0:
+                if (
+                    actuator_definition.planar_flag
+                    or (segment_nr - 1) % n_joint_types == 0
+                ):
                     ax_str = "_ax0"
                     joint_to_add = copy.copy(actuator_definition.joint_definitions[0])
 
-                elif (segment_nr-1) % n_joint_types==1:
+                elif (segment_nr - 1) % n_joint_types == 1:
                     ax_str = "_ax1"
                     joint_to_add = copy.copy(actuator_definition.joint_definitions[1])
 
-                elif (segment_nr-1) % n_joint_types == 2:
+                elif (segment_nr - 1) % n_joint_types == 2:
                     ax_str = "_ax2"
                     joint_to_add = copy.copy(actuator_definition.joint_definitions[2])
 
@@ -268,7 +273,8 @@ def create_manipulator_urdf(
                 not segment_nr == 0
                 and actuator_definition.link_definition.shape_type
                 in ["stadium", "capsule"]
-                and not joint_to_add.axis == [0, 0, 1]  # skip the extra shape helper for torsion joints
+                and not joint_to_add.axis
+                == [0, 0, 1]  # skip the extra shape helper for torsion joints
             ):
 
                 if actuator_definition.link_definition.shape_type in ["stadium"]:

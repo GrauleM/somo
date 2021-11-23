@@ -17,7 +17,9 @@ from somo.sm_manipulator_definition import SMManipulatorDefinition
 from somo.sm_continuum_manipulator import SMContinuumManipulator
 
 
-def manipulator_actuation_tester(gui: bool = False, total_sim_steps=1000, num_axes = None):
+def manipulator_actuation_tester(
+    gui: bool = False, total_sim_steps=1000, num_axes=None
+):
     """
     tests whether a manipulator can be instantiated in pybullet and whether a sinusoidal torque actuation can be applied
     """
@@ -40,8 +42,16 @@ def manipulator_actuation_tester(gui: bool = False, total_sim_steps=1000, num_ax
         pass
     else:  # if num_axes is provided, overwrite the number of axes that are actually instantiated
         # import pdb; pdb.set_trace()
-        manipulater_def_dict["actuator_definitions"][0]["joint_definitions"] = manipulater_def_dict_template["actuator_definitions"][0]["joint_definitions"][:num_axes]
-        if num_axes ==1: # if this is 1, we have a planar actuator in the test and need to set the planar_flag accordingly
+        manipulater_def_dict["actuator_definitions"][0][
+            "joint_definitions"
+        ] = manipulater_def_dict_template["actuator_definitions"][0][
+            "joint_definitions"
+        ][
+            :num_axes
+        ]
+        if (
+            num_axes == 1
+        ):  # if this is 1, we have a planar actuator in the test and need to set the planar_flag accordingly
             manipulater_def_dict["actuator_definitions"][0]["planar_flag"] = 1
 
     manipulator_def = SMManipulatorDefinition(**manipulater_def_dict)
@@ -102,14 +112,16 @@ def manipulator_actuation_tester(gui: bool = False, total_sim_steps=1000, num_ax
 
 
 def test_manipulator_actuation():
-    for i in range(1,4):
-        manipulator_actuation_tester(num_axes = i)
+    for i in range(1, 4):
+        manipulator_actuation_tester(num_axes=i)
 
 
 @pytest.mark.gui  # annotate it as a "gui" test
 def test_manipulator_actuation_gui():
-    for i in range(1,4):
-        manipulator_actuation_tester(gui=True, total_sim_steps=int(i*100000),num_axes = i)
+    for i in range(1, 4):
+        manipulator_actuation_tester(
+            gui=True, total_sim_steps=int(i * 100000), num_axes=i
+        )
 
 
 # test_manipulator_actuation_gui()
