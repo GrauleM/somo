@@ -211,18 +211,17 @@ def create_manipulator_urdf(
             else:
 
                 # import pdb; pdb.set_trace()
-                if actuator_definition.planar_flag or segment_nr % n_joint_types:
+                if actuator_definition.planar_flag or (segment_nr-1) % n_joint_types==0:
                     ax_str = "_ax0"
                     joint_to_add = copy.copy(actuator_definition.joint_definitions[0])
 
-                # else segment_nr % n_joint_types == 0:
-                else:
+                elif (segment_nr-1) % n_joint_types==1:
                     ax_str = "_ax1"
                     joint_to_add = copy.copy(actuator_definition.joint_definitions[1])
 
-                # elif (segment_nr-1) % n_joint_types == 2:
-                #     ax_str = "_ax2"
-                #     joint_to_add = copy.copy(actuator_definition.joint_definitions[2])
+                elif (segment_nr-1) % n_joint_types == 2:
+                    ax_str = "_ax2"
+                    joint_to_add = copy.copy(actuator_definition.joint_definitions[2])
 
             # finalize all the naming
             segment_name = "act" + str(actuator_nr) + "Seg" + str(segment_nr)
@@ -269,6 +268,7 @@ def create_manipulator_urdf(
                 not segment_nr == 0
                 and actuator_definition.link_definition.shape_type
                 in ["stadium", "capsule"]
+                and not joint_to_add.axis == [0, 0, 1]  # skip the extra shape helper for torsion joints
             ):
 
                 if actuator_definition.link_definition.shape_type in ["stadium"]:

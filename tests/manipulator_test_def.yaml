@@ -45,7 +45,7 @@ actuator_definitions:
 
       # Define joint type 3 (for torsion)
       - joint_type: "revolute"
-        axis: [ 0,1,0 ]
+        axis: [ 0,0,1 ]
         limits: [ -3.141592, 3.141592, 100, 3 ]
         spring_stiffness: 414.857 #332  #721.24 #94000
         joint_neutral_position: 0

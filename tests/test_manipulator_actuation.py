@@ -1,4 +1,6 @@
 import numpy as np
+import copy
+import yaml
 
 import pybullet as p
 import pybullet_data
@@ -15,7 +17,7 @@ from somo.sm_manipulator_definition import SMManipulatorDefinition
 from somo.sm_continuum_manipulator import SMContinuumManipulator
 
 
-def manipulator_actuation_tester(gui: bool = False, total_sim_steps=1000):
+def manipulator_actuation_tester(gui: bool = False, total_sim_steps=1000, num_axes = None):
     """
     tests whether a manipulator can be instantiated in pybullet and whether a sinusoidal torque actuation can be applied
     """
@@ -29,8 +31,22 @@ def manipulator_actuation_tester(gui: bool = False, total_sim_steps=1000):
         Path(__file__).parent, "manipulator_test_def.yaml"
     )
 
-    manipulator_def = SMManipulatorDefinition.from_file(manipulater_def_path)
+    with open(manipulater_def_path, "r") as manipulater_def_file:
+        manipulater_def_dict_template = yaml.safe_load(manipulater_def_file)
 
+    manipulater_def_dict = copy.deepcopy(manipulater_def_dict_template)
+    # if num_axes input is None, use the template directly.
+    if not num_axes:
+        pass
+    else:  # if num_axes is provided, overwrite the number of axes that are actually instantiated
+        # import pdb; pdb.set_trace()
+        manipulater_def_dict["actuator_definitions"][0]["joint_definitions"] = manipulater_def_dict_template["actuator_definitions"][0]["joint_definitions"][:num_axes]
+        if num_axes ==1: # if this is 1, we have a planar actuator in the test and need to set the planar_flag accordingly
+            manipulater_def_dict["actuator_definitions"][0]["planar_flag"] = 1
+
+    manipulator_def = SMManipulatorDefinition(**manipulater_def_dict)
+
+    # instantiate manipulator
     manipulator = SMContinuumManipulator(manipulator_def)
 
     if gui:
@@ -66,28 +82,18 @@ def manipulator_actuation_tester(gui: bool = False, total_sim_steps=1000):
     p.changeDynamics(manipulator.bodyUniqueId, -1, lateralFriction=2)
     p.changeDynamics(manipulator.bodyUniqueId, -1, restitution=1)
 
-    for i in range(int(total_sim_steps / 2)):
+    for axis_nr in range(num_axes):
+        for i in range(int(total_sim_steps / num_axes)):
 
-        action = 50 * np.sin(0.00005 * i)
+            action = 50 * np.sin(0.00005 * i)
 
-        manipulator.apply_actuation_torques(
-            actuator_nrs=[0],
-            axis_nrs=[0],
-            actuation_torques=[action],
-        )
+            manipulator.apply_actuation_torques(
+                actuator_nrs=[0],
+                axis_nrs=[axis_nr],
+                actuation_torques=[action],
+            )
 
-        p.stepSimulation(physicsClient)
-
-    for i in range(int(total_sim_steps / 2)):
-        action = 500 * np.sin(0.00005 * i)
-
-        manipulator.apply_actuation_torques(
-            actuator_nrs=[0],
-            axis_nrs=[1],
-            actuation_torques=[action],
-        )
-
-        p.stepSimulation(physicsClient)
+            p.stepSimulation(physicsClient)
 
     p.disconnect(physicsClient)
 
@@ -96,12 +102,14 @@ def manipulator_actuation_tester(gui: bool = False, total_sim_steps=1000):
 
 
 def test_manipulator_actuation():
-    manipulator_actuation_tester()
+    for i in range(1,4):
+        manipulator_actuation_tester(num_axes = i)
 
 
 @pytest.mark.gui  # annotate it as a "gui" test
 def test_manipulator_actuation_gui():
-    manipulator_actuation_tester(gui=True, total_sim_steps=5000000)
+    for i in range(1,4):
+        manipulator_actuation_tester(gui=True, total_sim_steps=int(i*100000),num_axes = i)
 
 
 # test_manipulator_actuation_gui()
