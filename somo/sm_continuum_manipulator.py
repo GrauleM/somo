@@ -37,7 +37,7 @@ def apply_actuation_torques(
         actuationTorques = extended_actuationTorques
 
     for jointId, torque in zip(jointIndices, actuationTorques):
-        jointState = p.getJointState(bodyIndex, jointId, physicsClientId = physicsClient)
+        jointState = p.getJointState(bodyIndex, jointId, physicsClientId=physicsClient)
 
         passive_torque = passiveTorqueFn(jointState, **kwargs)
 
@@ -46,7 +46,7 @@ def apply_actuation_torques(
             jointIndex=jointId,
             controlMode=p.TORQUE_CONTROL,
             force=passive_torque + torque,
-            physicsClientId=physicsClient
+            physicsClientId=physicsClient,
         )
 
 
@@ -57,7 +57,7 @@ def disable_joint_controllers(bodyIndex, jointIndices, forces, physicsClient):
             jointIndex=jointId,
             controlMode=p.VELOCITY_CONTROL,
             force=force,
-            physicsClientId=physicsClient
+            physicsClientId=physicsClient,
         )
 
 
@@ -189,7 +189,7 @@ class SMContinuumManipulator:
             info = p.getJointInfo(
                 bodyUniqueId=self.bodyUniqueId,
                 jointIndex=joint,
-                physicsClientId=self.physics_client ,
+                physicsClientId=self.physics_client,
             )
 
             joint_name = info[1].decode("UTF-8")
@@ -272,7 +272,7 @@ class SMContinuumManipulator:
             self.bodyUniqueId,
             self.flexible_joint_indices,
             self.joint_controller_limit_forces,
-            physicsClient=self.physics_client
+            physicsClient=self.physics_client,
         )
 
         if constrained_base:
@@ -288,7 +288,7 @@ class SMContinuumManipulator:
                 childFramePosition=baseStartPos,
                 parentFrameOrientation=p.getQuaternionFromEuler([0, 0, 0]),
                 childFrameOrientation=baseStartOrn,
-                physicsClientId = self.physics_client
+                physicsClientId=self.physics_client,
             )
 
         else:
@@ -393,7 +393,9 @@ class SMContinuumManipulator:
             extended_actuation_torque = [act_torque for x in range(len(joint_indices))]
 
             for jointId, torque in zip(joint_indices, extended_actuation_torque):
-                jointState = p.getJointState(self.bodyUniqueId, jointId, self.physics_client)
+                jointState = p.getJointState(
+                    self.bodyUniqueId, jointId, self.physics_client
+                )
                 jointPos = jointState[0]
 
                 passive_torque = -spring_const * (jointPos - offset)
@@ -403,7 +405,7 @@ class SMContinuumManipulator:
                     jointIndex=jointId,
                     controlMode=p.TORQUE_CONTROL,
                     force=passive_torque + torque,
-                    physicsClientId = self.physics_client
+                    physicsClientId=self.physics_client,
                 )
 
             addressed_actuator_axis_pairs.append((actuator_nr, axis_nr))
@@ -476,7 +478,10 @@ class SMContinuumManipulator:
             self.joint_controller_limit_forces[index] = limit_force
 
         disable_joint_controllers(
-            bodyIndex=self.bodyUniqueId, jointIndices=jointIds, forces=limit_forces, physicsClient = self.physics_client
+            bodyIndex=self.bodyUniqueId,
+            jointIndices=jointIds,
+            forces=limit_forces,
+            physicsClient=self.physics_client,
         )
 
     def set_contact_property(self, property_dict):
@@ -487,7 +492,7 @@ class SMContinuumManipulator:
                 self.bodyUniqueId,
                 i,
                 **property_dict,
-                physicsClientId=self.physics_client
+                physicsClientId=self.physics_client,
             )
 
     def get_backbone_position(self, s):
@@ -500,7 +505,11 @@ class SMContinuumManipulator:
             i += 1
 
         # todo: make more precise; don't just return the center of the link into which the arc length end falls
-        linkState = p.getLinkState(bodyUniqueId=self.bodyUniqueId, linkIndex=i, physicsClientId = self.physics_client )
+        linkState = p.getLinkState(
+            bodyUniqueId=self.bodyUniqueId,
+            linkIndex=i,
+            physicsClientId=self.physics_client,
+        )
         link_pos = linkState[0]
 
         return link_pos
@@ -509,7 +518,11 @@ class SMContinuumManipulator:
     def get_backbone_positions(self):
         positions = []
         for ind in range(len(self.linkId_to_arcLength)):
-            linkState = p.getLinkState(bodyUniqueId=self.bodyUniqueId, linkIndex=ind, physicsClientId = self.physics_client)
+            linkState = p.getLinkState(
+                bodyUniqueId=self.bodyUniqueId,
+                linkIndex=ind,
+                physicsClientId=self.physics_client,
+            )
             link_pos = linkState[0]
             positions.append(link_pos)
         return positions
@@ -518,7 +531,9 @@ class SMContinuumManipulator:
     def get_backbone_angles(self):
         angles = []
         for ind in self.flexible_joint_indices:
-            jointState = p.getJointState(self.bodyUniqueId, ind, physicsClientId = self.physics_client)
+            jointState = p.getJointState(
+                self.bodyUniqueId, ind, physicsClientId=self.physics_client
+            )
             jointPos = jointState[0]
             angles.append(jointPos)
         return angles
@@ -527,7 +542,9 @@ class SMContinuumManipulator:
         print("WARNING: offset by a constant factor")  # todo: fix this
         curvatures = []
         for ind in self.flexible_joint_indices:
-            jointState = p.getJointState(self.bodyUniqueId, ind, physicsClientId = self.physics_client)
+            jointState = p.getJointState(
+                self.bodyUniqueId, ind, physicsClientId=self.physics_client
+            )
             segment_length = 1  # TODO: add correct segment length
             angle = jointState[0]
             curvature = np.cos(angle / 2) / (segment_length / 2)
@@ -540,7 +557,10 @@ class SMContinuumManipulator:
         velocities = []
         for ind in range(len(self.linkId_to_arcLength)):
             linkState = p.getLinkState(
-                bodyUniqueId=self.bodyUniqueId, linkIndex=ind, computeLinkVelocity=1, physicsClientId = self.physics_client
+                bodyUniqueId=self.bodyUniqueId,
+                linkIndex=ind,
+                computeLinkVelocity=1,
+                physicsClientId=self.physics_client,
             )
             link_pos = linkState[0]
             link_vel = linkState[6]
