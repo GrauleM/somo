@@ -142,13 +142,17 @@ class SMManipulatorDefinition:
             "base_definition",
             "actuator_definitions",
             "manipulator_name",
-            "tip_definitions",
+            # "tip_definitions",
         ]
 
         for field_name in required_fields:
             assert (
                 field_name in dict_definition
             ), f"Field '{field_name}' is missing in manipulator definition."
+
+        assert ("tip_definitions" in dict_definition) or (
+            "tip_definition" in dict_definition
+        ), f"at least one of tip_definitions and tip_definition has to be in the manipulator definition."
 
     @staticmethod
     def from_json(json_file_path: str) -> "SMManipulatorDefinition":
