@@ -195,6 +195,7 @@ def create_manipulator_urdf(
         manipulator_definition.actuator_definitions, range(manipulator_definition.n_act)
     ):
 
+        joint_nr = 0
         for segment_nr in range(
             actuator_definition.n_segments + 1
         ):  # xx todo: enable varying cross-sections/properties - link_description could be a generator here
@@ -212,14 +213,17 @@ def create_manipulator_urdf(
 
             else:
 
-                # import pdb; pdb.set_trace()
-                if (
-                    actuator_definition.planar_flag
+                if actuator_definition.planar_flag == 2:
+                    print(joint_nr)
+                    ax_str = "_ax0"
+                    joint_to_add = copy.copy(actuator_definition.joint_definitions[joint_nr])
+                    joint_nr+=1  # todo: ugly/hacky; consider fixing
+                elif (
+                    actuator_definition.planar_flag == 1
                     or (segment_nr - 1) % n_joint_types == 0
                 ):
                     ax_str = "_ax0"
                     joint_to_add = copy.copy(actuator_definition.joint_definitions[0])
-
                 elif (segment_nr - 1) % n_joint_types == 1:
                     ax_str = "_ax1"
                     joint_to_add = copy.copy(actuator_definition.joint_definitions[1])

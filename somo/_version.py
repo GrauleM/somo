@@ -7,4 +7,4 @@ https://stackoverflow.com/questions/17583443/what-is-the-correct-way-to-share-pa
 """
 
 # The following line *must* be the last in the module, exactly as formatted:
-__version__ = "0.1.4"
+__version__ = "0.1.5"
