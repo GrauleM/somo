@@ -76,7 +76,7 @@ class SMManipulatorDefinition:
                 tip_definition = SMLinkDefinition(**tip_definition)
             elif isinstance(tip_definition, str):
                 if (
-                        tip_definition == ""
+                    tip_definition == ""
                 ):  # an empty string is interpreted as None / no dedicated tip
                     tip_definition = None
                 else:
@@ -90,18 +90,25 @@ class SMManipulatorDefinition:
                 ], f"tip shape_type has to be box, cylinder, or sphere - others are not implemented yet in urdf generation."
             return tip_definition
 
-        tip_definition=check_and_convert_tip_defonition(tip_definition)
+        tip_definition = check_and_convert_tip_defonition(tip_definition)
 
         if tip_definition:
-            assert isinstance(tip_definitions,
-                              type(None)), f"if tip_definition is provided, tip_definitions has to be None."
+            assert isinstance(
+                tip_definitions, type(None)
+            ), f"if tip_definition is provided, tip_definitions has to be None."
             tip_definitions = [tip_definition]
         elif tip_definitions:
-            assert isinstance(tip_definition,
-                              type(None)), f"if tip_definitions is provided, tip_definition has to be None."
-            assert isinstance(tip_definitions,list), f"tip_definitions has to be a list of Dicts or SMLinkDefinition or file path"
+            assert isinstance(
+                tip_definition, type(None)
+            ), f"if tip_definitions is provided, tip_definition has to be None."
+            assert isinstance(
+                tip_definitions, list
+            ), f"tip_definitions has to be a list of Dicts or SMLinkDefinition or file path"
 
-            tip_definitions = [check_and_convert_tip_defonition(tip_definition) for tip_definition in tip_definitions]
+            tip_definitions = [
+                check_and_convert_tip_defonition(tip_definition)
+                for tip_definition in tip_definitions
+            ]
 
         # allow for multiple tips all
         # todo: do same as above (i.e., loading for different representations) for the base_definition and tip_definitino
