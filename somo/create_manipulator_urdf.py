@@ -361,25 +361,28 @@ def create_manipulator_urdf(
             previous_joint = joint_to_add
             previous_link = link_to_add
 
-    if manipulator_definition.tip_definition:
-        tip_link_name = "tip_link"
-        parent_name = child_name
-        child_name = tip_link_name
-        joint_name = parent_name + "_to_" + child_name
+    if manipulator_definition.tip_definitions:
+        last_child = child_name
+        for i in range(len(manipulator_definition.tip_definitions)):
 
-        # make a fixed joint
-        tip_joint_definition = SMJointDefinition(joint_type="fixed")
+            tip_link_name = f"tip_link{i}"
+            parent_name = last_child
+            child_name = tip_link_name
+            joint_name = parent_name + "_to_" + child_name
 
-        add_joint_link_pair(
-            robot_root=robot,
-            parent_link_name=parent_name,
-            child_link_name=child_name,
-            joint_name=joint_name,
-            link=manipulator_definition.tip_definition,
-            joint=tip_joint_definition,
-            previous_link=previous_link,  # xx todo: have it automatically track 'previous_link' with self....
-            previous_joint=previous_joint,
-        )
+            # make a fixed joint
+            tip_joint_definition = SMJointDefinition(joint_type="fixed")
+
+            add_joint_link_pair(
+                robot_root=robot,
+                parent_link_name=parent_name,
+                child_link_name=child_name,
+                joint_name=joint_name,
+                link=manipulator_definition.tip_definitions[i],
+                joint=tip_joint_definition,
+                previous_link=previous_link,  # xx todo: have it automatically track 'previous_link' with self....
+                previous_joint=previous_joint,
+            )
 
     # save everything to file. formats the xml so it's easier to read, then write the file
     if manipulator_definition.urdf_filename:

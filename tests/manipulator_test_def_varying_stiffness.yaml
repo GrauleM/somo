@@ -77,11 +77,18 @@ base_definition:
   material_name:   "green"
 
 # Define the tip link. For fingers, use this to define the fingertip.
-tip_definition:
-  shape_type:      "sphere"
-  dimensions:      [0.3]
-  mass:            0.015 #0.0076
-  inertial_values: [0.10944, 0, 0, 0.10944, 0, 0.10944]
-  material_color:  [0.8,0.8,0.8,1.0]
-  material_name:   "white"
-  origin_offset:   [0, 0.1, -0.2, 0, 0, 0]
+tip_definitions:
+  - shape_type:      "sphere"
+    dimensions:      [0.3]
+    mass:            0.015 #0.0076
+    inertial_values: [0.10944, 0, 0, 0.10944, 0, 0.10944]
+    material_color:  [0.8,0.8,0.8,1.0]
+    material_name:   "white"
+    origin_offset:   [0, 0.1, -0.2, 0, 0, 0]
+  - shape_type:      "sphere"
+    dimensions:      [0.3]
+    mass:            0.15 #0.0076
+    inertial_values: [0.10944, 0, 0, 0.10944, 0, 0.10944]
+    material_color:  [0.8,0.8,0.8,1.0]
+    material_name:   "white"
+    origin_offset:   [0, 0.1, -0.1, 0, 0, 0]
