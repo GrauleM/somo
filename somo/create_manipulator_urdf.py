@@ -202,7 +202,7 @@ def create_manipulator_urdf(
 
             n_joint_types = len(
                 actuator_definition.joint_definitions
-            )  # todo: add a test for torsion joints
+            )  # todo: add a test for torsion joints;
 
             if (
                 total_segment_counter == 0
@@ -213,13 +213,15 @@ def create_manipulator_urdf(
 
             else:
 
-                if actuator_definition.planar_flag == 2:
-                    print(joint_nr)
+                if actuator_definition.planar_flag == 2: # todo: this is all ugly/hacky; consider fixing
                     ax_str = "_ax0"
                     joint_to_add = copy.copy(
                         actuator_definition.joint_definitions[joint_nr]
                     )
-                    joint_nr += 1  # todo: ugly/hacky; consider fixing
+                    if segment_nr==0:  # in this case, the joint that is added is a fixed joint (see later in code), so we do not increment the joint counter
+                        pass
+                    else:
+                        joint_nr += 1
                 elif (
                     actuator_definition.planar_flag == 1
                     or (segment_nr - 1) % n_joint_types == 0
@@ -316,7 +318,6 @@ def create_manipulator_urdf(
                         2 * actuator_definition.link_definition.dimensions[1]
                     )
 
-                # pdb.set_trace()
                 helper_offset = [
                     x - y - z
                     for x, y, z in zip(
@@ -325,7 +326,6 @@ def create_manipulator_urdf(
                         [0, 0, helper_shape_height / 2.0, 0, 0, 0],
                     )
                 ]
-                # pdb.set_trace()
                 additional_link_to_add = SMLinkDefinition(
                     shape_type=helper_shape,
                     dimensions=dim,
