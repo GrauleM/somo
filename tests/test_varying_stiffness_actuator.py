@@ -31,11 +31,12 @@ def manipulator_actuation_tester_varStiffness(gui: bool = False, total_sim_steps
     startOrientations = p.getQuaternionFromEuler([0, 0, 0])
 
     # test for a manipulator with one and two actuators
-    for definition_path in ["manipulator_test_def_varying_stiffness_2act.yaml","manipulator_test_def_varying_stiffness.yaml"]:
+    for definition_path in [
+        "manipulator_test_def_varying_stiffness_2act.yaml",
+        "manipulator_test_def_varying_stiffness.yaml",
+    ]:
         # load the manipulator definition
-        manipulater_def_path = os.path.join(
-            Path(__file__).parent, definition_path
-        )
+        manipulater_def_path = os.path.join(Path(__file__).parent, definition_path)
 
         with open(manipulater_def_path, "r") as manipulater_def_file:
             manipulater_def_dict_template = yaml.safe_load(manipulater_def_file)

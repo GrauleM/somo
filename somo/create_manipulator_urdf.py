@@ -213,12 +213,16 @@ def create_manipulator_urdf(
 
             else:
 
-                if actuator_definition.planar_flag == 2: # todo: this is all ugly/hacky; consider fixing
+                if (
+                    actuator_definition.planar_flag == 2
+                ):  # todo: this is all ugly/hacky; consider fixing
                     ax_str = "_ax0"
                     joint_to_add = copy.copy(
                         actuator_definition.joint_definitions[joint_nr]
                     )
-                    if segment_nr==0:  # in this case, the joint that is added is a fixed joint (see later in code), so we do not increment the joint counter
+                    if (
+                        segment_nr == 0
+                    ):  # in this case, the joint that is added is a fixed joint (see later in code), so we do not increment the joint counter
                         pass
                     else:
                         joint_nr += 1
