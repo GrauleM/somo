@@ -216,8 +216,10 @@ def create_manipulator_urdf(
                 if actuator_definition.planar_flag == 2:
                     print(joint_nr)
                     ax_str = "_ax0"
-                    joint_to_add = copy.copy(actuator_definition.joint_definitions[joint_nr])
-                    joint_nr+=1  # todo: ugly/hacky; consider fixing
+                    joint_to_add = copy.copy(
+                        actuator_definition.joint_definitions[joint_nr]
+                    )
+                    joint_nr += 1  # todo: ugly/hacky; consider fixing
                 elif (
                     actuator_definition.planar_flag == 1
                     or (segment_nr - 1) % n_joint_types == 0

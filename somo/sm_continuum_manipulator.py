@@ -178,7 +178,6 @@ class SMContinuumManipulator:
             useFixedBase=static_base,
             flags=all_flags,
         )
-        # pdb.set_trace()
 
         num_joints = p.getNumJoints(
             bodyUniqueId=self.bodyUniqueId, physicsClientId=self.physics_client
@@ -366,12 +365,15 @@ class SMContinuumManipulator:
             actuator_nrs, axis_nrs, actuation_torques
         ):
 
-            if self.manipulator_definition.actuator_definitions[
-                actuator_nr
-            ].planar_flag:
+            if (
+                self.manipulator_definition.actuator_definitions[
+                    actuator_nr
+                ].planar_flag
+                == 1
+            ):
                 assert (
                     axis_nr <= 0.0
-                ), f"planar actuators only have one addressable axis (with axis_nr = 0), but you provided axis_nr = {axis_nr}"
+                ), f"planar actuators with planar_flag=1 only have one addressable axis (with axis_nr = 0), but you provided axis_nr = {axis_nr}"
 
             offset = (
                 self.manipulator_definition.actuator_definitions[actuator_nr]
@@ -392,12 +394,31 @@ class SMContinuumManipulator:
 
             extended_actuation_torque = [act_torque for x in range(len(joint_indices))]
 
-            for jointId, torque in zip(joint_indices, extended_actuation_torque):
+            for jointId, torque, joint_counter in zip(
+                joint_indices, extended_actuation_torque, range(len(joint_indices))
+            ):
                 jointState = p.getJointState(
                     self.bodyUniqueId, jointId, self.physics_client
                 )
                 jointPos = jointState[0]
 
+                # for the planar_flag = 2 actuator, we need to get the offset and stiffness at the current joint counter
+                if (
+                    self.manipulator_definition.actuator_definitions[
+                        actuator_nr
+                    ].planar_flag
+                    == 2
+                ):
+                    offset = (
+                        self.manipulator_definition.actuator_definitions[actuator_nr]
+                        .joint_definitions[joint_counter]
+                        .joint_neutral_position
+                    )
+                    spring_const = (
+                        self.manipulator_definition.actuator_definitions[actuator_nr]
+                        .joint_definitions[joint_counter]
+                        .spring_stiffness
+                    )
                 passive_torque = -spring_const * (jointPos - offset)
 
                 p.setJointMotorControl2(

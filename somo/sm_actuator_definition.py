@@ -39,19 +39,23 @@ class SMActuatorDefinition:
         ), f"planar_flag has to be a bool or int"  # xx todo: make sure bool is serializable
 
         # additional assertions:
-        if planar_flag==1:
+        if planar_flag == 1:
             assert (
                 len(joint_definitions) == 1
             ), f"currently, quasi-planar actuators with planar_flag=1 only support a single entry in joint_definitions - this joint_definition defines identical joints along the actuator"
-        elif planar_flag==2:
+        elif planar_flag == 2:
             assert (
                 len(joint_definitions) > 1
             ), f"for planar actuators with planar_flag==2, you must speficy multiple joint_definitions with identical axis"
-            first_axis = joint_definitions[0]['axis']
-            for joint_nr in range(1,len(joint_definitions)):
-                axis = joint_definitions[joint_nr]['axis']
-                assert first_axis==axis, f"for planar actuators with planar_flag==2, all joints must have the same axis."
-            assert len(joint_definitions)==n_segments, f"for planar actuators with planar_flag==2, you must specify exactly as many joint definitions as n_segments in your actuator"
+            first_axis = joint_definitions[0]["axis"]
+            for joint_nr in range(1, len(joint_definitions)):
+                axis = joint_definitions[joint_nr]["axis"]
+                assert (
+                    first_axis == axis
+                ), f"for planar actuators with planar_flag==2, all joints must have the same axis."
+            assert (
+                len(joint_definitions) == n_segments
+            ), f"for planar actuators with planar_flag==2, you must specify exactly as many joint definitions as n_segments in your actuator"
 
         elif not planar_flag:
             assert (

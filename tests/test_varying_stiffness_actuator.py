@@ -21,9 +21,7 @@ from somo.sm_manipulator_definition import SMManipulatorDefinition
 from somo.sm_continuum_manipulator import SMContinuumManipulator
 
 
-def manipulator_actuation_tester_varStiffness(
-    gui: bool = False, total_sim_steps=1000
-):
+def manipulator_actuation_tester_varStiffness(gui: bool = False, total_sim_steps=1000):
     """
     tests whether a manipulator can be instantiated in pybullet and whether a sinusoidal torque actuation can be applied
     """
@@ -106,9 +104,7 @@ def test_manipulator_actuation_varStiffness():
 
 @pytest.mark.gui  # annotate it as a "gui" test
 def test_manipulator_actuation_varStiffness_gui():
-    manipulator_actuation_tester_varStiffness(
-            gui=True, total_sim_steps=int(1000000)
-        )
+    manipulator_actuation_tester_varStiffness(gui=True, total_sim_steps=int(1000000))
 
 
 if __name__ == "__main__":
