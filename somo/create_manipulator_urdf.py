@@ -86,6 +86,7 @@ def add_link(robot_root, link_name, link_definition: SMLinkDefinition, origin):
     inertial = ET.SubElement(link, "inertial")
     inner_mass = ET.SubElement(inertial, "mass", mass_dict)
     inner_in = ET.SubElement(inertial, "inertia", link_definition.inertial_value_dict)
+    inertial_orig = ET.SubElement(inertial, "origin", origin_dict)
 
     return link
 
