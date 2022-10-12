@@ -155,9 +155,9 @@ class SMContinuumManipulator:
             constrained_base = 0
 
         if flags:
-            all_flags = flags | p.URDF_MAINTAIN_LINK_ORDER | p.URDF_MERGE_FIXED_LINKS
+            all_flags = flags | p.URDF_MAINTAIN_LINK_ORDER
         else:
-            all_flags = p.URDF_MAINTAIN_LINK_ORDER | p.URDF_MERGE_FIXED_LINKS
+            all_flags = p.URDF_MAINTAIN_LINK_ORDER
 
         # clear all the lists and dicts that get populated (or appended to) when the manipulator is loaded into bullet
         # to avoid that they grow each time a given manipulator is loaded into a physics server
