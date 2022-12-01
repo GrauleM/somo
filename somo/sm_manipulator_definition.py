@@ -12,9 +12,10 @@ class SMManipulatorDefinition:
         base_definition: Union[SMLinkDefinition, type(None)],
         actuator_definitions: [Union[SMActuatorDefinition, Dict, str]],
         # todo: double check whether it is necessary/helpful to handle also dicts and str here
-        tip_definition: Union[SMLinkDefinition, type(None)],
         manipulator_name: str,
+        tip_definition: Union[SMLinkDefinition, type(None)] = None,
         urdf_filename: Union[str, type(None)] = None,
+        tip_definitions: Union[List, type(None)] = None,
     ):
 
         # assert that all arguments are of the right type. may not be necessary to do this, but won't hurt...
@@ -69,23 +70,47 @@ class SMManipulatorDefinition:
             else:
                 base_definition = SMLinkDefinition.from_file(base_definition)
 
-        if isinstance(tip_definition, Dict):
-            SMLinkDefinition.assert_required_fields(tip_definition)
-            tip_definition = SMLinkDefinition(**tip_definition)
-        elif isinstance(tip_definition, str):
-            if (
-                tip_definition == ""
-            ):  # an empty string is interpreted as None / no dedicated tip
-                tip_definition = None
-            else:
-                tip_definition = SMLinkDefinition.from_file(tip_definition)
+        def check_and_convert_tip_defonition(tip_definition):
+            if isinstance(tip_definition, Dict):
+                SMLinkDefinition.assert_required_fields(tip_definition)
+                tip_definition = SMLinkDefinition(**tip_definition)
+            elif isinstance(tip_definition, str):
+                if (
+                    tip_definition == ""
+                ):  # an empty string is interpreted as None / no dedicated tip
+                    tip_definition = None
+                else:
+                    tip_definition = SMLinkDefinition.from_file(tip_definition)
+
+            if tip_definition:
+                assert tip_definition.shape_type in [
+                    "box",
+                    "cylinder",
+                    "sphere",
+                ], f"tip shape_type has to be box, cylinder, or sphere - others are not implemented yet in urdf generation."
+            return tip_definition
+
+        tip_definition = check_and_convert_tip_defonition(tip_definition)
 
         if tip_definition:
-            assert tip_definition.shape_type in [
-                "box",
-                "cylinder",
-                "sphere",
-            ], f"tip shape_type has to be box, cylinder, or sphere - others are not implemented yet in urdf generation."
+            assert isinstance(
+                tip_definitions, type(None)
+            ), f"if tip_definition is provided, tip_definitions has to be None."
+            tip_definitions = [tip_definition]
+        elif tip_definitions:
+            assert isinstance(
+                tip_definition, type(None)
+            ), f"if tip_definitions is provided, tip_definition has to be None."
+            assert isinstance(
+                tip_definitions, list
+            ), f"tip_definitions has to be a list of Dicts or SMLinkDefinition or file path"
+
+            tip_definitions = [
+                check_and_convert_tip_defonition(tip_definition)
+                for tip_definition in tip_definitions
+            ]
+
+        # allow for multiple tips all
         # todo: do same as above (i.e., loading for different representations) for the base_definition and tip_definitino
 
         # todo: consider adding a conversion from empty string to None for urdf_filename and manipulator_name (meaning that urdf_filename="" is converted to urdf_filename = None)
@@ -94,7 +119,7 @@ class SMManipulatorDefinition:
         self.n_act = n_act
         self.actuator_definitions = new_actuator_definitions
         self.base_definition = base_definition
-        self.tip_definition = tip_definition  # xx todo: check if this should always be turned into SMLinkDefinition thingy. i think it should be
+        self.tip_definitions = tip_definitions  # xx todo: check if this should always be turned into SMLinkDefinition thingy. i think it should be
         self.manipulator_name = manipulator_name
         self.urdf_filename = urdf_filename
 
@@ -105,7 +130,7 @@ class SMManipulatorDefinition:
             "actuator_definitions",
             "manipulator_name",
             "urdf_filename",
-            "tip_definition",
+            "tip_definitions",
         ]
         for a in required_attributes:
             assert hasattr(self, a), f"attribute {a} is missing"
@@ -117,13 +142,16 @@ class SMManipulatorDefinition:
             "base_definition",
             "actuator_definitions",
             "manipulator_name",
-            "tip_definition",
         ]
 
         for field_name in required_fields:
             assert (
                 field_name in dict_definition
             ), f"Field '{field_name}' is missing in manipulator definition."
+
+        assert ("tip_definitions" in dict_definition) or (
+            "tip_definition" in dict_definition
+        ), f"at least one of tip_definitions and tip_definition has to be in the manipulator definition."
 
     @staticmethod
     def from_json(json_file_path: str) -> "SMManipulatorDefinition":

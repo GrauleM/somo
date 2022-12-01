@@ -196,13 +196,14 @@ def create_manipulator_urdf(
         manipulator_definition.actuator_definitions, range(manipulator_definition.n_act)
     ):
 
+        joint_nr = 0
         for segment_nr in range(
             actuator_definition.n_segments + 1
         ):  # xx todo: enable varying cross-sections/properties - link_description could be a generator here
 
             n_joint_types = len(
                 actuator_definition.joint_definitions
-            )  # todo: add a test for torsion joints
+            )  # todo: add a test for torsion joints;
 
             if (
                 total_segment_counter == 0
@@ -213,14 +214,25 @@ def create_manipulator_urdf(
 
             else:
 
-                # import pdb; pdb.set_trace()
                 if (
-                    actuator_definition.planar_flag
+                    actuator_definition.planar_flag == 2
+                ):  # todo: this is all ugly/hacky; consider fixing
+                    ax_str = "_ax0"
+                    joint_to_add = copy.copy(
+                        actuator_definition.joint_definitions[joint_nr]
+                    )
+                    if (
+                        segment_nr == 0
+                    ):  # in this case, the joint that is added is a fixed joint (see later in code), so we do not increment the joint counter
+                        pass
+                    else:
+                        joint_nr += 1
+                elif (
+                    actuator_definition.planar_flag == 1
                     or (segment_nr - 1) % n_joint_types == 0
                 ):
                     ax_str = "_ax0"
                     joint_to_add = copy.copy(actuator_definition.joint_definitions[0])
-
                 elif (segment_nr - 1) % n_joint_types == 1:
                     ax_str = "_ax1"
                     joint_to_add = copy.copy(actuator_definition.joint_definitions[1])
@@ -311,7 +323,6 @@ def create_manipulator_urdf(
                         2 * actuator_definition.link_definition.dimensions[1]
                     )
 
-                # pdb.set_trace()
                 helper_offset = [
                     x - y - z
                     for x, y, z in zip(
@@ -320,7 +331,6 @@ def create_manipulator_urdf(
                         [0, 0, helper_shape_height / 2.0, 0, 0, 0],
                     )
                 ]
-                # pdb.set_trace()
                 additional_link_to_add = SMLinkDefinition(
                     shape_type=helper_shape,
                     dimensions=dim,
@@ -356,25 +366,28 @@ def create_manipulator_urdf(
             previous_joint = joint_to_add
             previous_link = link_to_add
 
-    if manipulator_definition.tip_definition:
-        tip_link_name = "tip_link"
-        parent_name = child_name
-        child_name = tip_link_name
-        joint_name = parent_name + "_to_" + child_name
+    if manipulator_definition.tip_definitions:
+        last_child = child_name
+        for i in range(len(manipulator_definition.tip_definitions)):
 
-        # make a fixed joint
-        tip_joint_definition = SMJointDefinition(joint_type="fixed")
+            tip_link_name = f"tip_link{i}"
+            parent_name = last_child
+            child_name = tip_link_name
+            joint_name = parent_name + "_to_" + child_name
 
-        add_joint_link_pair(
-            robot_root=robot,
-            parent_link_name=parent_name,
-            child_link_name=child_name,
-            joint_name=joint_name,
-            link=manipulator_definition.tip_definition,
-            joint=tip_joint_definition,
-            previous_link=previous_link,  # xx todo: have it automatically track 'previous_link' with self....
-            previous_joint=previous_joint,
-        )
+            # make a fixed joint
+            tip_joint_definition = SMJointDefinition(joint_type="fixed")
+
+            add_joint_link_pair(
+                robot_root=robot,
+                parent_link_name=parent_name,
+                child_link_name=child_name,
+                joint_name=joint_name,
+                link=manipulator_definition.tip_definitions[i],
+                joint=tip_joint_definition,
+                previous_link=previous_link,  # xx todo: have it automatically track 'previous_link' with self....
+                previous_joint=previous_joint,
+            )
 
     # save everything to file. formats the xml so it's easier to read, then write the file
     if manipulator_definition.urdf_filename:
