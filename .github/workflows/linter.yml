@@ -40,4 +40,4 @@ jobs:
       # Run linter #
       - name: Lint Code Base
         run: |
-          python3 -m black --check .
+          python3 -m black --exclude _version.py --check .
