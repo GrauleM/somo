@@ -142,7 +142,6 @@ class SMManipulatorDefinition:
             "base_definition",
             "actuator_definitions",
             "manipulator_name",
-            # "tip_definitions",
         ]
 
         for field_name in required_fields:
