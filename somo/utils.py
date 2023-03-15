@@ -136,6 +136,7 @@ def load_constrained_urdf(urdf_filename, startPos, startOrn, physicsClient):
         childFramePosition=startPos,
         parentFrameOrientation=p.getQuaternionFromEuler([0, 0, 0]),
         childFrameOrientation=startOrn,
+        physicsClientId=physicsClient,
     )
     return bodyUniqueId, constraintUniqueId
 

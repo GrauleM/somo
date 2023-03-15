@@ -398,7 +398,7 @@ class SMContinuumManipulator:
                 joint_indices, extended_actuation_torque, range(len(joint_indices))
             ):
                 jointState = p.getJointState(
-                    self.bodyUniqueId, jointId, self.physics_client
+                    self.bodyUniqueId, jointId, physicsClientId=self.physics_client
                 )
                 jointPos = jointState[0]
 
@@ -508,7 +508,7 @@ class SMContinuumManipulator:
     def set_contact_property(self, property_dict):
         # todo: assert that dict only has valid keys
         # todo: test this with the snake example
-        for i in range(p.getNumJoints(self.bodyUniqueId)):
+        for i in range(p.getNumJoints(self.bodyUniqueId, physicsClient=self.physics_client)):
             p.changeDynamics(
                 self.bodyUniqueId,
                 i,
